@@ -6,7 +6,7 @@
 #include "../Math/Transform.h"
 
 
-void neu::Model::Draw(Renderer& renderer, const Vector2& position, float angle, float scale)
+void neu::Model::Draw(Renderer& renderer, const Vector2& position, float angle, const Vector2& scale)
 {
 	for (int i = 0; i < m_points.size() - 1; i++) {
 		neu::Vector2 p1 = Vector2::Rotate((m_points[i] * scale), angle) + position;

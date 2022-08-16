@@ -15,7 +15,7 @@ namespace neu
 			m_radius = CalculateRadius();
 		}
 
-		void Draw(Renderer& renderer, const Vector2& position, float angle, float sclae = 1);
+		void Draw(Renderer& renderer, const Vector2& position, float angle, const Vector2& scale = Vector2{ 1, 1 });
 
 		void Load(const std::string& filename);
 		float CalculateRadius();

@@ -15,6 +15,8 @@
 #include "FrameWork/Scene.h"
 #include "FrameWork/Game.h"
 
+#include "Components/PlayerComponent.h"
+
 #include "Audio/AudioSystem.h"
 
 

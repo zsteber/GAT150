@@ -17,7 +17,21 @@ namespace neu
 		Vector2(int x, int y) : x{ (float)x }, y{ (float)y } {}
 
 		void Set(float x, float y) { this->x = x; this->y = y; }
+
+		float operator [] (size_t index) const { return (&x)[index]; }
+		float& operator [] (size_t index) { return (&x)[index]; }
+
+
 		Vector2 Add(const Vector2& v) { return Vector2{ v.x + x, v.y + y }; }
+
+
+		static const Vector2 one;
+		static const Vector2 zero;
+		static const Vector2 up;
+		static const Vector2 right;
+		static const Vector2 left;
+		static const Vector2 down;
+
 
 		//Functions
 		float LengthSqr();
@@ -33,7 +47,7 @@ namespace neu
 
 		// Arithmetic Operators
 		Vector2 operator + (const Vector2& v) { return Vector2(x + v.x, y + v.y); }
-		Vector2 operator - (const Vector2& v) { return Vector2(x - v.x, y - v.y); }
+		Vector2 operator - (const Vector2& v) const { return Vector2{ this->x - v.x, this->y - v.y }; }
 		Vector2 operator * (const Vector2& v) { return Vector2(x * v.x, y * v.y); }
 		Vector2 operator / (const Vector2& v) { return Vector2(x / v.x, y / v.y); }
 
@@ -45,7 +59,7 @@ namespace neu
 		
 		// Assignment Operators
 		Vector2 operator + (float s) { return Vector2(x + s, y + s); }
-		Vector2 operator - (float s) { return Vector2(x - s, y - s); }
+		Vector2 operator - (float s) const { return Vector2{ this->x - s, this->y - s }; }
 		Vector2 operator * (float s) { return Vector2(x * s, y * s); }
 		Vector2 operator / (float s) { return Vector2(x / s, y / s); }
 
@@ -65,20 +79,10 @@ namespace neu
 
 	};
 
-	inline std::istream& operator >> (std::istream& stream, Vector2& v)
-	{
-		std::string line;
-		std::getline(stream, line);
+	std::istream& operator >> (std::istream& stream, Vector2& v);
+	
+	
 
-		// { ##, ##}
-		std::string xstring = line.substr(line.find("{") + 1, line.find(",") - (line.find("{") - 1));
-		v.x = std::stof(xstring);
-
-		std::string ystring = line.substr(line.find(",") + 1, line.find("}") - (line.find(",") + 1));
-		v.y = std::stof(ystring);
-
-		return stream;
-	}
 
 	//Functions
 	inline float Vector2::LengthSqr() { return x * x + y * y; }

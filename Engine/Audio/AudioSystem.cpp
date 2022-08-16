@@ -1,4 +1,5 @@
 #include "AudioSystem.h"
+#include "../Core/Logger.h"
 #include <fmod.hpp>
 
 namespace neu
@@ -32,7 +33,7 @@ namespace neu
 	void AudioSystem::AddAudio(const std::string& name, const std::string& filename)
 	{
 		auto it = m_sounds.find(name);
-		if (it == m_sounds.end())
+		if (it != m_sounds.end())
 		{
 			FMOD::Sound* sound = nullptr;
 			m_fmodSystem->createSound(filename.c_str(), FMOD_DEFAULT, 0, &sound);
@@ -44,6 +45,12 @@ namespace neu
 	void AudioSystem::PlayAudio(const std::string& name, bool loop)
 	{
 		auto it = m_sounds.find(name);
+
+		if (it == m_sounds.end())
+		{
+			LOG("Error: Coult not find sound %s", name.c_str());
+		}
+
 		if (it != m_sounds.end())
 		{
 			FMOD::Sound* sound = it->second;

@@ -1,5 +1,7 @@
 #pragma once
 #include <cstdint>
+#include <istream>
+#include <string>
 
 namespace neu
 {
@@ -8,6 +10,12 @@ namespace neu
 		uint8_t r, g, b, a;
 
 		friend std::istream& operator >> (std::istream& stream, Color& color);
+
+		static const Color white;
+		static const Color black;
+		static const Color red;
+		static const Color green;
+		static const Color blue;
 	};
 
 	inline std::istream& operator >> (std::istream& stream, Color& color)
