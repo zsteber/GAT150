@@ -1,5 +1,6 @@
 #include "Engine.h"
 #include <iostream>
+#include <cassert>
 
 
 using namespace std;
@@ -13,7 +14,7 @@ int main()
 
 	rapidjson::Document document;
 	bool success = neu::json::Load("json.txt", document);
-
+	assert(success);
 
 	std::string str;
 	neu::json::Get(document, "string", str);
