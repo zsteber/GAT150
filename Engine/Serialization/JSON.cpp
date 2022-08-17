@@ -1,8 +1,8 @@
-#include "../JSON.h"
+#include "Json.h"
 #include "rapidjson/istreamwrapper.h"
-#include "../Core/Logger.h"
-#include "../Math/Vector2.h"
-#include "../Math/Color.h"
+#include "Core/Logger.h"
+#include "Math/Vector2.h"
+#include "Math/Color.h"
 #include <fstream>
 
 
@@ -10,12 +10,19 @@ namespace neu::json
 {
     bool Load(const std::string& filename, rapidjson::Document& document)
     {
-        std::ifstream stream;
+        std::ifstream stream(filename);
+
+        if (!stream.is_open())
+        {
+            LOG("json file cannot be read %s.", filename.c_str());
+            return false;
+        }
 
         rapidjson::IStreamWrapper istream(stream);
         document.ParseStream(istream);
         if (document.IsObject() == false)
         {
+            LOG("json file cannot be read %s.", filename.c_str());
             return false;
         }
 
@@ -27,9 +34,11 @@ namespace neu::json
 
         if (value.HasMember(name.c_str()) == false || value[name.c_str()].IsInt() == false)
         {
-           return false;
+            LOG("error reading json data %s", name.c_str());
+            return false;
         }
 
+        // set data 
         data = value[name.c_str()].GetInt();
 
         return true;
@@ -37,11 +46,13 @@ namespace neu::json
 
     bool Get(const rapidjson::Value& value, const std::string& name, float& data)
     {
-        if (value.HasMember(name.c_str()) == false || value[name.c_str()].IsFloat() == false)
+        if (value.HasMember(name.c_str()) == false || value[name.c_str()].IsNumber() == false)
         {
+            LOG("error reading json data %s", name.c_str());
             return false;
         }
 
+        // set data 
         data = value[name.c_str()].GetFloat();
 
         return true;
@@ -51,9 +62,11 @@ namespace neu::json
     {
         if (value.HasMember(name.c_str()) == false || value[name.c_str()].IsBool() == false)
         {
+            LOG("error reading json data %s", name.c_str());
             return false;
         }
 
+        // set data 
         data = value[name.c_str()].GetBool();
 
         return true;
@@ -63,9 +76,11 @@ namespace neu::json
     {
         if (value.HasMember(name.c_str()) == false || value[name.c_str()].IsString() == false)
         {
+            LOG("error reading json data %s", name.c_str());
             return false;
         }
 
+        // set data 
         data = value[name.c_str()].GetString();
 
         return true;
@@ -73,22 +88,27 @@ namespace neu::json
 
     bool Get(const rapidjson::Value& value, const std::string& name, Vector2& data)
     {
+        // check if 'name' member exists and is an array with 2 elements 
         if (value.HasMember(name.c_str()) == false || value[name.c_str()].IsArray() == false || value[name.c_str()].Size() != 2)
         {
+            LOG("error reading json data %s", name.c_str());
             return false;
 
         }
 
         // create json array object 
         auto& array = value[name.c_str()];
+        // get array values 
         for (rapidjson::SizeType i = 0; i < array.Size(); i++)
         {
-            if (!array[i].IsInt())
+            if (!array[i].IsNumber())
             {
+
+                LOG("error reading json data (not a float) %s", name.c_str());
                 return false;
             }
 
-            data[i] = array[i].GetInt();
+            data[i] = array[i].GetFloat();
         }
 
         return true;
@@ -96,22 +116,27 @@ namespace neu::json
 
     bool Get(const rapidjson::Value& value, const std::string& name, Color& data)
     {
+        // check if 'name' member exists and is an array with 2 elements 
         if (value.HasMember(name.c_str()) == false || value[name.c_str()].IsArray() == false || value[name.c_str()].Size() != 4)
         {
-           return false;
+            LOG("error reading json data %s", name.c_str());
+            return false;
 
         }
 
         // create json array object 
         auto& array = value[name.c_str()];
+        // get array values 
         for (rapidjson::SizeType i = 0; i < array.Size(); i++)
         {
-            if (!array[i].IsFloat())
+            if (!array[i].IsInt())
             {
+
+                LOG("error reading json data (not a float) %s", name.c_str());
                 return false;
             }
 
-            data[i] = array[i].GetInt();
+            data[i] = array[i].GetFloat();
         }
 
         return true;

@@ -1,9 +1,13 @@
 #pragma once
 #include "rapidjson/document.h"
 #include <string>
+#include <istream>
+
+#define READ_DATA(value,data) neu::json::Get(value, #data, data);
 
 namespace neu
 {
+	
 	struct Vector2;
 	struct Color;
 }
