@@ -1,4 +1,5 @@
 #include "SpriteComponent.h"
+#include "FrameWork/Actor.h"
 #include "../Renderer/Renderer.h"
 #include "../FrameWork/Component.h"
 

@@ -10,7 +10,7 @@ namespace neu
 	public:
 		PlayerComponent() = default;
 
-		virtual void Update() = 0;
+		void Update() override;
 
 	};
 }

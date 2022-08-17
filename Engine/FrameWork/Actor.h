@@ -16,7 +16,7 @@ namespace neu
 		Actor() = default;
 		Actor(const Transform& transform) : m_transform{ transform } {}
 
-		virtual void Update();
+		virtual void Update() override;
 		virtual void Draw(Renderer& renderer);
 
 		void AddComponent(std::unique_ptr<Component> component);
