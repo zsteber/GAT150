@@ -1,7 +1,4 @@
 #include "Engine.h"
-#include <Renderer/Text.h>
-#include <Renderer/Font.h>
-#include "Core/Logger.h"
 #include <iostream>
 
 
@@ -13,6 +10,38 @@ int main()
 
 	neu::InitializeMemory();
 	neu::SetFilePath("../Assets");
+
+	rapidjson::Document document;
+	bool success = neu::json::Load("json.txt", document);
+
+
+	std::string str;
+	neu::json::Get(document, "string", str);
+	cout << str << std::endl;
+
+	bool b;
+	neu::json::Get(document, "boolean", b);
+	cout << b << std::endl;
+
+	int i1;
+	neu::json::Get(document, "integer1", i1);
+	cout << i1 << std::endl;
+
+	int i2;
+	neu::json::Get(document, "integer2", i2);
+	cout << i2 << std::endl;
+
+	float f;
+	neu::json::Get(document, "float", f);
+	cout << f << std::endl;
+
+	neu::Vector2 v2;
+	neu::json::Get(document, "vector2", v2);
+	cout << v2 << std::endl;
+
+	neu::Color color;
+	neu::json::Get(document, "color", color);
+	cout << color << std::endl;
 
 	// create systems
 	neu::g_renderer.Initialize();

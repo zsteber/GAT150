@@ -5,7 +5,7 @@
 
 namespace neu
 {
-	class Model
+	class Model : public Resource
 	{
 	public:
 		Model() = default;
@@ -15,11 +15,13 @@ namespace neu
 			m_radius = CalculateRadius();
 		}
 
+		bool Create(std::string filename, ...) override;
+
 		void Draw(Renderer& renderer, const Vector2& position, float angle, const Vector2& scale = Vector2{ 1, 1 });
 
 		void Load(const std::string& filename);
-		float CalculateRadius();
 
+		float CalculateRadius();
 		float GetRadius() { return m_radius; }
 
 

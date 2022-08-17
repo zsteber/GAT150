@@ -1,9 +1,10 @@
 #include "Model.h"
 #include "../Core/File.h"
-
+#include "../Math/Transform.h"
 #include <iostream>
 #include <sstream>
-#include "../Math/Transform.h"
+#include <cstdarg>
+
 
 
 void neu::Model::Draw(Renderer& renderer, const Vector2& position, float angle, const Vector2& scale)
@@ -52,4 +53,14 @@ float neu::Model::CalculateRadius()
 	}
 
 	return radius;
+}
+
+bool neu::Model::Create(std::string filename, ...)
+{
+	va_list args;
+	va_start(args, filename); 
+	Renderer& renderer = va_arg(args, Renderer); 
+	va_end(args);
+ 
+	return Create(filename, renderer);
 }

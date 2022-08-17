@@ -21,7 +21,7 @@ namespace neu
 		float operator [] (size_t index) const { return (&x)[index]; }
 		float& operator [] (size_t index) { return (&x)[index]; }
 
-
+		
 		Vector2 Add(const Vector2& v) { return Vector2{ v.x + x, v.y + y }; }
 
 
@@ -82,6 +82,7 @@ namespace neu
 	std::istream& operator >> (std::istream& stream, Vector2& v);
 	
 	
+	std::ostream& operator << (std::ostream& stream, const Vector2& v);
 
 
 	//Functions

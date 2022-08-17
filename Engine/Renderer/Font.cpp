@@ -1,5 +1,6 @@
 #include "Font.h"
 #include <SDL_ttf.h>
+#include "Renderer.h"
 
 neu::Font::Font(const std::string& filename, int fontSize)
 {
@@ -14,7 +15,18 @@ neu::Font::~Font()
 	}
 }
 
-void neu::Font::Load(const std::string& filename, int fontSize)
+bool neu::Font::Create(std::string filename, ...)
+{
+	va_list args;
+	va_start(args, filename);
+	int fontSize = va_arg(args, int);
+	va_end(args);
+	return Load(filename, fontSize);
+}
+
+bool neu::Font::Load(const std::string& filename, int fontSize)
 {
 	m_ttfFont = TTF_OpenFont(filename.c_str(), fontSize);
+
+	return m_ttfFont;
 }

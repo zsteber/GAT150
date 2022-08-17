@@ -11,6 +11,16 @@ namespace neu
 		if (texture != NULL) SDL_DestroyTexture(texture);
 	}
 
+	bool Texture::Create(std::string filename, ...) 
+	{
+		va_list args;
+		va_start(args, filename);
+		Renderer& renderer = va_arg(args, Renderer);
+		va_end(args);
+
+		return Create(renderer, filename);
+	}
+
 	bool Texture::Create(Renderer& renderer, const std::string& filename)
 	{
 		// Load Surface

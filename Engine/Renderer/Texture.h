@@ -1,4 +1,5 @@
 #pragma once
+#include "../Resource/Resource.h"
 #include "..\Math\Vector2.h"
 #include <string>
 
@@ -8,13 +9,14 @@ namespace neu
 {
 	class Renderer;
 
-	class Texture
+	class Texture : public Resource
 	{
 	public:
 
 		Texture() = default;
 		~Texture();
 
+		bool Create(std::string filename, ...) override;
 		bool Create(Renderer& renderer, const std::string& filename);
 		Vector2 GetSize() const;
 
