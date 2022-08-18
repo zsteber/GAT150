@@ -2,7 +2,7 @@
 #include "../Math/Transform.h"
 #include "Serialization/Serializable.h"
 
-#define REGISTER_CLASS(class) Factory::Instance().REgister<class>(#class)
+#define REGISTER_CLASS(class) Factory::Instance().Register<class>(#class);
 
 namespace neu
 {

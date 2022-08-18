@@ -21,10 +21,13 @@ int main()
 	neu::g_renderer.Initialize();
 	neu::g_inputSystem.Initialize();
 	neu::g_audioSystem.Initialize();
+	neu::g_resources.Initialize();
+
+	neu::Engine::Instance().Register();
 
 	// create window
 	neu::g_renderer.CreateWindow("Chicken Pot Pie", 800, 600);
-	neu::g_renderer.SetClearColor(neu::Color{ 0, 0, 0, 255 });
+	neu::g_renderer.SetClearColor(neu::Color{ 50, 50, 50, 255 });
 
 
 	//create actors
@@ -66,4 +69,5 @@ int main()
 	neu::g_audioSystem.Shutdown();
 	neu::g_inputSystem.Shutdown();
 	neu::g_renderer.ShutDown();
+	neu::g_resources.Shutdown();
 }

@@ -9,7 +9,7 @@ struct SDL_Window;
 namespace neu
 {
 	class Texture;
-	class Transform;
+	struct Transform;
 	struct Rect;
 
 	class Renderer
