@@ -1,9 +1,9 @@
 #include "Scene.h"
-#include <algorithm>
+#include "Factory.h"
 
 #include <iostream>
-#include <Instance.h>
 #include <Core/Logger.h>
+
 
 namespace neu
 {
@@ -22,19 +22,20 @@ namespace neu
 				iter++;
 			}
 		}
+
 		for (auto iter1 = m_actor.begin(); iter1 != m_actor.end(); iter1++)
 		{
 			for (auto iter2 = m_actor.begin(); iter2 != m_actor.end(); iter2++)
 			{
 				if (iter1 == iter2) continue;
 
-				float radius = (*iter1)->getRadius() + (*iter2)->getRadius();
+				float radius = (*iter1)->GetRadius() + (*iter2)->GetRadius();
 				float distance = (*iter1)->m_transform.position.Distance((*iter2)->m_transform.position);
 
 				if (distance < radius)
 				{
-					(*iter1)->onCollision(iter2->get());
-					(*iter2)->onCollision(iter1->get());
+					(*iter1)->OnCollision(iter2->get());
+					(*iter2)->OnCollision(iter1->get());
 				}
 			}
 		}
@@ -82,7 +83,7 @@ namespace neu
 
 	void Scene::Add(std::unique_ptr<Actor> actor)
 	{
-		actor->scene = this;
+		actor->m_scene = this;
 		m_actor.push_back(std::move(actor));
 	}
 }

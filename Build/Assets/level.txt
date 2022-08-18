@@ -22,16 +22,16 @@
             },
             {
                "type":"PhysicsComponent",
-               "damping":0.99
+               "m_damping":0.99
             },
             {
-               "type":"SpriteComponent",
-               "texture_name":"Textures/blue_01.png"
+               "type":"SpriteAnimComponent",
+               "texture_name":"Textures/gothic-hero-idle.png",
                "fps":12,
-               "num_columns":12,
+               "num_colums":4,
                "num_rows":1,
                "start_frame":1,
-               "end_frame":12
+               "end_frame":4
             }
          ]
       }

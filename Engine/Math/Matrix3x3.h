@@ -14,8 +14,8 @@ namespace neu
 		Vector3 operator [] (size_t index) const { return rows[index]; }
 		Vector3& operator [] (size_t index) { return rows[index]; }
 
-		Vector2 operator * (const Vector2& v);
-		Matrix3x3 operator * (const Matrix3x3& mx);
+		Vector2 operator * (const Vector2& v) const;
+		Matrix3x3 operator * (const Matrix3x3& mx) const;
 
 		static const Matrix3x3 identity;
 		static const Matrix3x3 zero;
@@ -33,7 +33,7 @@ namespace neu
 		rows[2];
 	}
 
-	inline Vector2 Matrix3x3::operator*(const Vector2& v)
+	inline Vector2 Matrix3x3::operator*(const Vector2& v) const
 	{
 		Vector2 result;
 
@@ -43,7 +43,7 @@ namespace neu
 		return result;
 	}
 
-	inline Matrix3x3 Matrix3x3::operator*(const Matrix3x3& mx)
+	inline Matrix3x3 Matrix3x3::operator*(const Matrix3x3& mx) const
 	{
 		Matrix3x3 result;
 
