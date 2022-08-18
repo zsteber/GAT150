@@ -65,6 +65,7 @@ int main()
 	actor->AddComponent(std::move(pcomponent));
 
 	scene.Add(std::move(actor));
+	scene.Read(document);
 
 	float angle = 0;
 

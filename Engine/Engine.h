@@ -15,6 +15,8 @@
 #include "Renderer/Text.h"
 #include "Renderer/Font.h"
 
+#include "Resource/ResourceManager.h"
+
 #include "FrameWork/Scene.h"
 #include "FrameWork/Game.h"
 
@@ -29,4 +31,5 @@ namespace neu
 	extern Renderer g_renderer;
 	extern Time timer;
 	extern AudioSystem g_audioSystem;
+	extern ResourceManager g_resources;
 }

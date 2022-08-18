@@ -1,11 +1,13 @@
 #include "Renderer.h" 
-#include <SDL.h> 
-#include <SDL_ttf.h>
-#include <SDL_image.h>
 #include "../Engine.h"
 #include "Texture.h"
 #include "../Math/Transform.h"
 #include "../Math/MathUtils.h"
+#include "../Math/Rect.h"
+
+#include <SDL.h> 
+#include <SDL_ttf.h>
+#include <SDL_image.h>
 
 namespace neu
 {
@@ -86,6 +88,7 @@ namespace neu
 
 		SDL_RenderCopyEx(m_renderer, texture->texture, nullptr, &dest, angle, &center, SDL_FLIP_NONE);
 	}
+
 	void Renderer::Draw(std::shared_ptr<Texture> texture, const Transform& transform, const Vector2& registration)
 	{
 		Vector2 size = texture->GetSize();
@@ -103,5 +106,30 @@ namespace neu
 		SDL_Point center{ (int)origin.x, (int)origin.y };
 
 		SDL_RenderCopyEx(m_renderer, texture->texture, nullptr, &dest, transform.rotation, &center, SDL_FLIP_NONE);
+	}
+
+	void Renderer::Draw(std::shared_ptr<Texture> texture, const Rect& source, const Transform& transform, const Vector2& registration)
+	{
+		Vector2 size = Vector2{ source.w, source.h };
+		size = size * transform.scale;
+
+		Vector2 origin = size * registration;
+		Vector2 tposition = transform.position - origin;
+
+		SDL_Rect dest;
+		dest.x = (int)tposition.x;
+		dest.y = (int)tposition.y;
+		dest.w = (int)size.x;
+		dest.h = (int)size.y;
+
+		SDL_Rect src;
+		src.x = source.x;
+		src.y = source.y;
+		src.w = source.w;
+		src.h = source.h;
+
+		SDL_Point center{ (int)origin.x, (int)origin.y };
+
+		SDL_RenderCopyEx(m_renderer, texture->texture, &src, &dest, transform.rotation, &center, SDL_FLIP_NONE);
 	}
 }

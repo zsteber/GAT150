@@ -2,6 +2,8 @@
 #include <algorithm>
 
 #include <iostream>
+#include <Instance.h>
+#include <Core/Logger.h>
 
 namespace neu
 {
@@ -45,6 +47,36 @@ namespace neu
 		{
 			actor->Draw(renderer);
 		}
+	}
+
+	bool Scene::Write(const rapidjson::Value& value) const
+	{
+		return true;
+	}
+
+	bool Scene::Read(const rapidjson::Value& value)
+	{
+		if (!value.HasMember("actors") || !value["actors"].IsArray())
+		{
+			LOG("Error reading file, neither an Actor nor Array");
+			return false;
+		}
+
+		//read actors
+		for (auto& actorValue : value["actors"].GetArray())
+		{
+			std::string type;
+			READ_DATA(actorValue, type);
+
+			auto actor = Factory::Instance().Create<Actor>(type);
+			if (actor)
+			{
+				actor->Read(actorValue);
+				Add(std::move(actor));
+			}
+		}
+
+		return true;
 	}
 
 

@@ -6,4 +6,5 @@ namespace neu
 	Renderer g_renderer;
 	Time timer;
 	AudioSystem g_audioSystem;
+	ResourceManager g_resources;
 }
