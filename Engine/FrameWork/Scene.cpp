@@ -7,6 +7,11 @@
 
 namespace neu
 {
+	void Scene::Initialize()
+	{
+		for (auto& actor : m_actor) { actor->Initialize();}
+	}
+
 	void Scene::Update()
 	{
 		auto iter = m_actor.begin();

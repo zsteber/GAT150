@@ -14,6 +14,8 @@ namespace neu
 		Scene() = default;
 		~Scene() = default;
 
+		virtual void Initialize() override;
+
 		void Update();
 		void Draw(Renderer& renderer);
 		virtual bool Write(const rapidjson::Value& value) const override;
