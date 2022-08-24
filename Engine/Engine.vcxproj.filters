@@ -130,6 +130,9 @@
     <ClCompile Include="Physics\PhysicsSystem.cpp">
       <Filter>Physics</Filter>
     </ClCompile>
+    <ClCompile Include="Components\CollisionComponent.cpp">
+      <Filter>Source Files\Components</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="Math\MathUtils.h">
