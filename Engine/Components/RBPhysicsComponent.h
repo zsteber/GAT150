@@ -17,6 +17,7 @@ namespace neu
 		bool Write(const rapidjson::Value& value) const override;
 		bool Read(const rapidjson::Value& value) override;
 
+		
 	private:
 		PhysicsSystem::RigidBodyData data;
 		b2Body* m_body = nullptr;

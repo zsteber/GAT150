@@ -25,7 +25,7 @@ namespace neu
 		m_owner->m_transform.rotation = m_body->GetAngle();
 	}
 
-	void RBPhysicsComponent::AppliedForce(const Vector2& force)
+	void RBPhysicsComponent::ApplyForce(const Vector2& force)
 	{
 		m_body->ApplyForceToCenter(VECTOR2_TO_B2VEC2(force), true);
 	}

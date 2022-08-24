@@ -36,7 +36,7 @@ namespace neu
 			Vector2 force = Vector2::Rotate({ 1, 0 }, neu::DegToRad(m_owner->m_transform.rotation)) * thrust;
 			component->ApplyForce(force);
 
-			component->ApplyForce(direction * speed)
+			//component->ApplyForce(direction * speed);
 
 			// Gravity
 			force = (Vector2{ 400,300 } - m_owner->m_transform.position).Normalized() * 60.0;

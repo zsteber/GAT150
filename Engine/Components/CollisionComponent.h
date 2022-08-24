@@ -5,7 +5,7 @@
 
 namespace neu
 {
-	class CollisionComponent : public Component, public ICollision
+	class CollisionComponent : public Component, public Collision
 	{
 	public:
 		virtual void Initialize() override;
