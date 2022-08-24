@@ -62,27 +62,24 @@ namespace neu
 
 	bool Scene::Read(const rapidjson::Value& value)
 	{
-		if (!value.HasMember("actors") || !value["actors"].IsArray())
-		{
-			LOG("Error reading file, neither an Actor nor Array");
-			return false;
-		}
-
-		//read actors
-		for (auto& actorValue : value["actors"].GetArray())
-		{
-			std::string type;
-			READ_DATA(actorValue, type);
-
-			auto actor = Factory::Instance().Create<Actor>(type);
-			if (actor)
+			if (!(value.HasMember("actors")) || !value["actors"].IsArray())
 			{
-				actor->Read(actorValue);
-				Add(std::move(actor));
+				return false;
 			}
-		}
 
-		return true;
+			for (auto& actorValue : value["actors"].GetArray())
+			{
+				std::string type;
+				READ_DATA(actorValue, type);
+				auto actor = Factory::Instance().Create<Actor>(type);
+				if (actor)
+				{
+					//read actor
+					actor->Read(actorValue);
+					Add(std::move(actor));
+				}
+			}
+			return true;
 	}
 
 

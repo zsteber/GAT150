@@ -5,7 +5,8 @@ namespace neu
 {
 	RBPhysicsComponent::~RBPhysicsComponent()
 	{
-		if (m_body) {
+		if (m_body)
+		{
 			g_physicsSystem.DestroyBody(m_body);
 		}
 	}
@@ -17,18 +18,16 @@ namespace neu
 		m_body->SetLinearDamping(damping);
 	}
 
-	void RBPhysicsComponent::ApplyForce(const Vector2& force)
-	{
-		b2Vec2 v{ force.x, force.y };
-
-		m_body->ApplForceToCenter(VECTOR2_TOB2VEC2(force, true));
-	}
-
 	void RBPhysicsComponent::Update()
 	{
-		Vector2 position = B2VEC2_TOVECTOR2(m_body->GetPosition());
+		Vector2 position = B2VEC2_TO_VECTOR2(m_body->GetPosition());
 		m_owner->m_transform.position = PhysicsSystem::WorldToScreen(position);
-		m_owner->m_transform.position = m_body->GetAngle();
+		m_owner->m_transform.rotation = m_body->GetAngle();
+	}
+
+	void RBPhysicsComponent::AppliedForce(const Vector2& force)
+	{
+		m_body->ApplyForceToCenter(VECTOR2_TO_B2VEC2(force), true);
 	}
 
 	bool RBPhysicsComponent::Write(const rapidjson::Value& value) const

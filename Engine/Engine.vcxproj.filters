@@ -36,6 +36,9 @@
     <Filter Include="Serialization">
       <UniqueIdentifier>{f804ec89-aa15-43ac-bc8c-757bb45d1a91}</UniqueIdentifier>
     </Filter>
+    <Filter Include="Physics">
+      <UniqueIdentifier>{2082e7ef-68ac-4758-bd4b-003f320fa413}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="Math\MathUtils.cpp">
@@ -123,6 +126,9 @@
     <ClCompile Include="Engine.cpp" />
     <ClCompile Include="Components\RBPhysicsComponent.cpp">
       <Filter>Source Files\Components</Filter>
+    </ClCompile>
+    <ClCompile Include="Physics\PhysicsSystem.cpp">
+      <Filter>Physics</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>
@@ -245,6 +251,15 @@
       <Filter>Source Files\Components</Filter>
     </ClInclude>
     <ClInclude Include="Components\RBPhysicsComponent.h">
+      <Filter>Source Files\Components</Filter>
+    </ClInclude>
+    <ClInclude Include="Physics\Collision.h">
+      <Filter>Physics</Filter>
+    </ClInclude>
+    <ClInclude Include="Physics\PhysicsSystem.h">
+      <Filter>Physics</Filter>
+    </ClInclude>
+    <ClInclude Include="Components\CollisionComponent.h">
       <Filter>Source Files\Components</Filter>
     </ClInclude>
   </ItemGroup>

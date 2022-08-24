@@ -42,6 +42,7 @@ namespace neu
 		friend class Scene;
 
 		Transform m_transform;
+
 	protected:
 		std::string name;
 		std::string tag;

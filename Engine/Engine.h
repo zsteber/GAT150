@@ -2,39 +2,39 @@
 
 #include "JSON.h"
 
-#include "Core/Memory.h"
-#include "Core/File.h"
-#include "Core/Time.h"
-
-#include "Math/MathUtils.h"
 #include "Math/Random.h"
+#include "Math/MathUtils.h"
 
-#include "FrameWork/GameObject.h"
-#include "FrameWork/Factory.h"
+#include "Core/Memory.h"
+#include "Core//File.h"
+#include "Core/Time.h"
+#include "Core/Logger.h"
+
+#include "Renderer/Renderer.h"
+#include "Renderer/Font.h"
+#include "Renderer/Text.h"
+#include "Renderer/Texture.h"
+#include "Renderer/Model.h"
 
 #include "Input/InputSystem.h"
-#include "Renderer/Renderer.h"
-#include "Renderer/Model.h"
-#include "Renderer/Text.h"
-#include "Renderer/Font.h"
-
-#include "FrameWork/Singleton.h"
-
+#include "Audio/AudioSystem.h"
 #include "Resource/ResourceManager.h"
 
-#include "FrameWork/Scene.h"
-#include "FrameWork/Game.h"
+#include "Framework/Scene.h"
+#include "Framework/Game.h"
+#include "Framework/Factory.h"
+#include "Framework/Singleton.h"
 
 #include "Components/PlayerComponent.h"
-#include "Components/PhysicsComponent.h"
-#include "Components/ModelComponent.h"
-#include "Components/AudioComponent.h"
 #include "Components/SpriteComponent.h"
+#include "Components/AudioComponent.h"
+#include "Components/CollisionComponent.h"
+#include "Components/PhysicsComponent.h"
+#include "Components/RBPhysicsComponent.h"
+#include "Components/ModelComponent.h"
 #include "Components/SpriteAnimComponent.h"
 
-
-#include "Audio/AudioSystem.h"
-
+#include <memory>
 
 namespace neu
 {
@@ -43,6 +43,7 @@ namespace neu
 	extern Time timer;
 	extern AudioSystem g_audioSystem;
 	extern ResourceManager g_resources;
+	extern PhysicsSystem g_physicsSystem;
 
 	class Engine : public Singleton<Engine>
 	{

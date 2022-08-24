@@ -1,5 +1,6 @@
 #pragma once
 #include "PhysicsComponent.h"
+#include "Physics/PhysicsSystem.h"
 
 namespace neu
 {
@@ -17,7 +18,7 @@ namespace neu
 		bool Read(const rapidjson::Value& value) override;
 
 	private:
-		PhysicsComponent::RigidBodyData data;
+		PhysicsSystem::RigidBodyData data;
 		b2Body* m_body = nullptr;
 
 	};
