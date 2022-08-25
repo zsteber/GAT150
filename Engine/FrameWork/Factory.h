@@ -33,6 +33,9 @@ namespace neu
 		void Register(const std::string& key);
 
 		template <typename T>
+		void RegisterPrefab(const std::string& key, std::unique_ptr<T> instance);
+
+		template <typename T>
 		std::unique_ptr<T> Create(const std::string& key);
 	private:
 		std::map<std::string, std::unique_ptr<CreatorBase>> m_registry;
@@ -46,8 +49,15 @@ namespace neu
 	}
 
 	template<typename T>
+	inline void Factory::RegisterPrefab(const std::string& key, std::unique_ptr<T> instance)
+	{
+		m_registry[key] = std::make_unique<PrefabCreator<T>>(std::move(instance));
+	}
+
+	template<typename T>
 	inline std::unique_ptr<T> Factory::Create(const std::string& key)
 	{
+	public:
 		auto iter = m_registry.find(key);
 		if (iter != m_registry.end())
 		{
@@ -56,4 +66,20 @@ namespace neu
 
 		return std::unique_ptr<T>();
 	}
+
+	template <typename T>
+	class Creator : public CreatorBase
+	{
+	public:
+		PrefabCreator(std::unique_ptr<T> instance) : m_instance{ std::move(instance) } {}
+		std::unique_ptr<GameObject> Create() override
+		{
+			return std::make_unique<T>();
+		}
+
+	private:
+		std::unique_ptr<T> m_instance;
+
+	};
+
 }

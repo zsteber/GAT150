@@ -28,6 +28,7 @@ namespace neu
 			}
 		}
 
+		// check collision
 		for (auto iter1 = m_actor.begin(); iter1 != m_actor.end(); iter1++)
 		{
 			for (auto iter2 = m_actor.begin(); iter2 != m_actor.end(); iter2++)

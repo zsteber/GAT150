@@ -11,6 +11,7 @@ namespace neu
 	public:
 		GameObject() = default;
 		
+		virtual std::unique_ptr<GameObject> Clone() = 0;
 		virtual void Initialize() = 0;
 		virtual void Update() = 0;
 	};

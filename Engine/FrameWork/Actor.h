@@ -15,6 +15,8 @@ namespace neu
 		Actor() = default;
 		Actor(const Transform& transform) : m_transform{ transform } {}
 
+		std::unique_ptr<GameObject> Clone() { return std::make_unique<Actor>(); }
+
 		virtual void Initialize() override;
 
 		virtual void Update() override;
@@ -49,9 +51,7 @@ namespace neu
 
 
 		bool m_destroy = false;
-		//physics
-		Vector2 m_velocity;
-		float m_damping = 1;
+		
 
 		Scene* m_scene = nullptr;
 		Actor* m_parent = nullptr;
