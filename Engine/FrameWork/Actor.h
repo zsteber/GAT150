@@ -13,9 +13,10 @@ namespace neu
 	{
 	public:
 		Actor() = default;
+		Actor(const Actor& other);
 		Actor(const Transform& transform) : m_transform{ transform } {}
 
-		std::unique_ptr<GameObject> Clone() { return std::make_unique<Actor>(); }
+		std::unique_ptr<GameObject> Clone() override { return std::make_unique<Actor>(*this); }
 
 		virtual void Initialize() override;
 

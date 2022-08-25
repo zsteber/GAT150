@@ -57,7 +57,6 @@ namespace neu
 	template<typename T>
 	inline std::unique_ptr<T> Factory::Create(const std::string& key)
 	{
-	public:
 		auto iter = m_registry.find(key);
 		if (iter != m_registry.end())
 		{
@@ -68,13 +67,14 @@ namespace neu
 	}
 
 	template <typename T>
-	class Creator : public CreatorBase
+	class PrefabCreator : public CreatorBase
 	{
 	public:
 		PrefabCreator(std::unique_ptr<T> instance) : m_instance{ std::move(instance) } {}
+
 		std::unique_ptr<GameObject> Create() override
 		{
-			return std::make_unique<T>();
+			return m_instance->Clone();
 		}
 
 	private:

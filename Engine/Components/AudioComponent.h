@@ -10,6 +10,8 @@ namespace neu
 		AudioComponent() = default;
 		void Update() override;
 
+		CLASS_DECLARATION(AudioComponent);
+
 		void Play();
 		void Stop();
 

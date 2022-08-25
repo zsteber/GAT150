@@ -8,6 +8,8 @@ namespace neu
 	{
 
 	public:
+		CLASS_DECLARATION(PlayerComponent);
+
 		PlayerComponent() = default;
 
 		void Update() override;

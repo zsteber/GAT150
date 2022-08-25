@@ -7,6 +7,11 @@
 
 namespace neu
 {
+	Scene::Scene(const Scene& other)
+	{
+
+	}
+
 	void Scene::Initialize()
 	{
 		for (auto& actor : m_actor) { actor->Initialize();}
@@ -72,12 +77,26 @@ namespace neu
 			{
 				std::string type;
 				READ_DATA(actorValue, type);
+
 				auto actor = Factory::Instance().Create<Actor>(type);
 				if (actor)
 				{
 					//read actor
 					actor->Read(actorValue);
 					Add(std::move(actor));
+
+					bool Prefab = false;
+					READ_DATA(actorValue, Prefab);
+
+					if (Prefab)
+					{
+						std::string name = actor->GetName();
+						Factory::Instance().RegisterPrefab(name, std::move(actor));
+					}
+					else
+					{
+						Add(std::move(actor));
+					}
 				}
 			}
 			return true;

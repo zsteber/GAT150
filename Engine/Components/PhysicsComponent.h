@@ -7,6 +7,7 @@ namespace neu
 	class PhysicsComponent : public Component
 	{
 	public:
+		CLASS_DECLARATION(PhysicsComponent);
 
 		PhysicsComponent() = default;
 

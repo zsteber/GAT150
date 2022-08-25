@@ -33,12 +33,21 @@ int main()
 	//create actors
 	neu::Scene scene;
 
+	rapidjson::Document document;
+	bool success = neu::json::Load("level.txt", document);
+
 	std::unique_ptr<neu::Actor> actor = std::make_unique<neu::Actor>();
 	std::unique_ptr<neu::PlayerComponent> pcomponent = std::make_unique<neu::PlayerComponent>();
 	actor->AddComponent(std::move(pcomponent));
 
 	scene.Add(std::move(actor));
 	scene.Read(document);
+
+	auto actor = neu::Factory::Instance().Create<neu::Actor>("Coin");
+	actor->m_transform.position = (600, 100);
+	actor->Initialize();
+
+	scene.Add(std::move(actor));
 
 	float angle = 0;
 

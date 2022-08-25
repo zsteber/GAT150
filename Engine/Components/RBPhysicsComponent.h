@@ -7,6 +7,8 @@ namespace neu
 
 	class RBPhysicsComponent : public PhysicsComponent
 	{
+		CLASS_DECLARATION(RBPhysicsComponent);
+
 		RBPhysicsComponent() = default;
 		~RBPhysicsComponent() = default;
 
@@ -21,6 +23,5 @@ namespace neu
 	private:
 		PhysicsSystem::RigidBodyData data;
 		b2Body* m_body = nullptr;
-
 	};
 }

@@ -4,12 +4,25 @@
 
 namespace neu
 {
+	Actor::Actor(const Actor& other)
+	{
+		name = other.name;
+		tag = other.tag;
+
+		m_scene = other.m_scene;
+
+		for (auto& component : other.m_components)
+		{
+			auto clone = std::make_unique<Component>((Component*)component->Clone().release());
+			AddComponent(std::move(clone));
+		}
+	}
 
 	void Actor::Initialize()
 	{
 		for (auto& component : m_components) { component->Initialize(); }
 
-		for (auto& child : m_children) { component->Initialize(); }
+		for (auto& child : m_children) { child->Initialize(); }
 	}
 
 	void Actor::Update()
