@@ -37,6 +37,20 @@
       }
    ]
 }
+
+{ 
+         "type":"Actor", 
+         "name":"Music", 
+         "components":[ 
+            { 
+               "type":"AudioComponent", 
+               "sound_name":"audio/music.mp3", 
+               "loop":true, 
+               "play_on_start":true 
+            } 
+         ] 
+      } 
+
 {
    "type":"Actor",
    "name":"Coin",

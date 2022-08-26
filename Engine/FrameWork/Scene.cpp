@@ -1,6 +1,5 @@
 #include "Scene.h"
 #include "Factory.h"
-
 #include <iostream>
 #include <Core/Logger.h>
 
@@ -9,12 +8,16 @@ namespace neu
 {
 	Scene::Scene(const Scene& other)
 	{
-
 	}
 
 	void Scene::Initialize()
 	{
 		for (auto& actor : m_actor) { actor->Initialize();}
+	}
+
+	void Scene::RemoveAll()
+	{
+		m_actor.clear();
 	}
 
 	void Scene::Update()

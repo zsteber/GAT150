@@ -1,6 +1,10 @@
 #pragma once
 #include "box2d/box2d.h" 
+#include "box2d/b2_world.h"
+#include "box2d/b2_polygon_shape.h"
+#include "box2d/b2_fixture.h"
 #include "Math/Vector2.h"
+#include "Physics/ContactListener.h"
 #include <memory> 
 
 #define VECTOR2_TO_B2VEC2(vec) (*(b2Vec2*)(&vec))
@@ -23,7 +27,7 @@ namespace neu
 			Vector2 size;
 			float density = 1;
 			float friction = 1;
-			float restitution = 0.3f; //bouncey
+			float restitution = 0.3f;
 			bool is_trigger = false;
 		};
 
@@ -49,5 +53,6 @@ namespace neu
 
 
 		std::unique_ptr<b2World> m_world;
+		std::unique_ptr<ContactListener> m_contactListener;
 	};
 }

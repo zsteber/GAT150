@@ -10,6 +10,16 @@
 
 namespace neu
 {
+	void PlayerComponent::Initialize()
+	{
+		auto component = m_owner->GetComponent<CollisionComponent>();
+		if (component)
+		{
+			component->SetCollisionEnter(std::bind(&PlayerComponent::OnCollisionEnter, this, std::placeholders::_1));
+			component->SetCollisionExit(std::bind(&PlayerComponent::OnCollisionExit, this, std::placeholders::_1));
+		}
+	}
+
 	void PlayerComponent::Update()
 	{
 		// Movement
@@ -61,5 +71,14 @@ namespace neu
 		READ_DATA(value, speed);
 		 
 		return true;
+	}
+
+	void PlayerComponent::OnCollisionEnter(Actor* other)
+	{
+		std::cout << "Player Enter" << std::endl;
+	}
+	void PlayerComponent::OnCollisionExit(Actor* other)
+	{
+		std::cout << "Player Exit" << std::endl;
 	}
 }

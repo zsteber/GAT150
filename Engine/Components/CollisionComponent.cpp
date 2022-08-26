@@ -1,46 +1,44 @@
 #include "CollisionComponent.h"
 #include "Engine.h"
 
-void neu::CollisionComponent::Initialize()
+namespace neu
 {
-    auto component = m_owner->GetComponent<RBPhysicsComponent>();
-
-    if (component)
+    void CollisionComponent::Initialize()
     {
-        g_physicsSystem.SetCollisionBox(component->m_body, data, m_owner);
+        auto component = m_owner->GetComponent<RBPhysicsComponent>();
+        if (component)
+        {
+            g_physicsSystem.SetCollisionBox(component->m_body, data, m_owner);
+        }
     }
-}
 
-void neu::CollisionComponent::Update()
-{
-}
+    void CollisionComponent::Update()
+    {
+    }
 
-void neu::CollisionComponent::OnCollisionEnter(Actor* other)
-{
-}
+    bool CollisionComponent::Write(const rapidjson::Value& value) const
+    {
+        return true;
+    }
 
-void neu::CollisionComponent::OnCollisionExit(Actor* other)
-{
-}
+    bool CollisionComponent::Read(const rapidjson::Value& value)
+    {
+        READ_DATA(value, data.size);
+        READ_DATA(value, data.density);
+        READ_DATA(value, data.friction);
+        READ_DATA(value, data.restitution);
+        READ_DATA(value, data.is_trigger);
 
-bool neu::CollisionComponent::Write(const rapidjson::Value& value) const
-{
-	return false;
-}
+        return true;
+    }
 
-bool neu::CollisionComponent::Read(const rapidjson::Value& value)
-{
-    Vector2 size;
-    float density = 1;
-    float friction = 1;
-    float restitution = 0.3f;
-    bool is_trigger = false;
+    void CollisionComponent::OnCollisionEnter(Actor* other)
+    {
+        if (enterFunction) enterFunction(other);
+    }
 
-    READ_DATA(value, data.size);
-    READ_DATA(value, data.density);
-    READ_DATA(value, data.friction);
-    READ_DATA(value, data.restitution);
-    READ_DATA(value, data.is_trigger);
-
-    return true;
+    void CollisionComponent::OnCollisionExit(Actor* other)
+    {
+        if (enterFunction) exitFunction(other);
+    }
 }

@@ -21,6 +21,21 @@ namespace neu
 		return Create(renderer, filename);
 	}
 
+	bool Texture::CreateFromSurface(SDL_Surface* surface, Renderer& renderer)
+	{
+		if (texture) SDL_DestroyTexture(texture);
+
+		texture = SDL_CreateTextureFromSurface(renderer.GetRenderer(), surface);
+		SDL_FreeSurface(surface);
+
+		if (texture == nullptr)
+		{
+			LOG(SDL_GetError());
+			return false;
+		}
+		return true;
+	}
+
 	bool Texture::Create(Renderer& renderer, const std::string& filename)
 	{
 		// Load Surface

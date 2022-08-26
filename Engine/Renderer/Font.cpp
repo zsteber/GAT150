@@ -1,6 +1,7 @@
 #include "Font.h"
 #include <SDL_ttf.h>
 #include "Renderer.h"
+#include <Engine.cpp>
 
 neu::Font::Font(const std::string& filename, int fontSize)
 {
@@ -21,12 +22,42 @@ bool neu::Font::Create(std::string filename, ...)
 	va_start(args, filename);
 	int fontSize = va_arg(args, int);
 	va_end(args);
-	return Load(filename, fontSize);
+	return Create(filename, fontSize);
+}
+
+bool neu::Font::Create(const std::string& filename, int& fontsize)
+{
+	if (!Load(filename, fontsize))
+	{
+		return false;
+	}
+	return true;
+}
+namespace neu
+{
+
+	SDL_Surface* Font::CreateSurface(const std::string& text, const Color& color)
+	{
+		SDL_Color c = *((SDL_Color*)(&color));
+		SDL_Surface* surface = TTF_RenderText_Solid(m_ttfFont, text.c_str(), c);
+
+		if (!surface)
+		{
+			LOG(SDL_GetError());
+		}
+
+		return surface;
+	}
 }
 
 bool neu::Font::Load(const std::string& filename, int fontSize)
 {
 	m_ttfFont = TTF_OpenFont(filename.c_str(), fontSize);
 
-	return m_ttfFont;
+	if (m_ttfFont == nullptr)
+	{
+		return false;
+	}
+
+	return true;
 }

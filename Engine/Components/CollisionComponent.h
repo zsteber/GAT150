@@ -2,6 +2,7 @@
 #include "Framework/Component.h"
 #include "Physics/Collision.h"
 #include "Physics/PhysicsSystem.h"
+#include <functional>
 
 namespace neu
 {
@@ -9,6 +10,8 @@ namespace neu
 	{
 	public:
 		CLASS_DECLARATION(CollisionComponent);
+
+		using functionpr = std::function<void(Actor*)>;
 
 		virtual void Initialize() override;
 		virtual void Update() override;
@@ -19,8 +22,14 @@ namespace neu
 		virtual bool Write(const rapidjson::Value& value) const override;
 		virtual bool Read(const rapidjson::Value& value) override;
 
+		void SetCollisionEnter(functionpr function) { enterFunction = function; }
+		void SetCollisionExit(functionpr function) { exitFunction = function; }
+
 	private:
 		PhysicsSystem::CollisionData data;
+
+		functionpr enterFunction;
+		functionpr exitFunction;
 
 	};
 }

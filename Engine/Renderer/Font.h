@@ -14,7 +14,9 @@ namespace neu
 		~Font();
 
 		bool Create(std::string filename, ...) override;
-		bool Create(const std::string& filename) { return false; }
+		bool Create(const std::string& filename, int& fontsize);
+
+		SDL_Surface* CreateSurface(const std::string& text, const Color& color);
 
 		bool Load(const std::string& filename, int fontSize);
 

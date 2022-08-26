@@ -16,6 +16,8 @@ namespace neu
 		bool Read(const rapidjson::Value& value);
 		virtual void ApplyForce(const Vector2& force) { acceleration += force; }
 
+		virtual void Initialize() override {}
+
 		Vector2 velocity;
 		Vector2 acceleration;
 
