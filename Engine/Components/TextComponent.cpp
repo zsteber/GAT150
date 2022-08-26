@@ -22,15 +22,19 @@ namespace neu
 
 		return true;
 	}
+
 	void TextComponent::Update()
 	{
+
 	}
+
 	void TextComponent::Draw(Renderer& renderer)
 	{
 		g_renderer.Draw(m_texture, m_owner->m_transform, registration);
 	}
+
 	void TextComponent::SetText(const std::string& text)
 	{
-		m_texture->CreateFromSurface(m_font->CreateSurface(text, color), renderer_g);
+		m_texture->CreateFromSurface(m_font->CreateSurface(text, color), g_renderer);
 	}
 }

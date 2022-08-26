@@ -173,7 +173,6 @@
     <ClCompile Include="Engine.cpp" />
     <ClCompile Include="FrameWork\Actor.cpp" />
     <ClCompile Include="Framework\Scene.cpp" />
-    <ClCompile Include="FrameWork\SpaceShooter.cpp" />
     <ClCompile Include="Input\InputSystem.cpp" />
     <ClCompile Include="Math\Color.cpp" />
     <ClCompile Include="Math\MathUtils.cpp" />
