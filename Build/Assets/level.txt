@@ -1,5 +1,88 @@
 {
    "actors":[
+     {
+         "type":"Actor",
+         "name":"Background",
+         "transform":{
+            "position":[
+               400,
+               300
+            ],
+            "scale":[
+               1,
+               1
+            ],
+            "rotation":0
+         },
+         "components":[
+            {
+               "type":"SpriteComponent",
+               "texture_name":"Textures/background.png"
+            }
+         ]
+      },
+          { 
+         "type":"Actor", 
+         "name":"Text", 
+         "transform":{ 
+            "position":[ 
+               40, 
+               30 
+            ], 
+            "scale":[ 
+               1, 
+               1 
+            ], 
+            "rotation":0 
+         }, 
+         "components":[ 
+            { 
+               "type":"TextComponent", 
+               "text":"Engine Playtest", 
+               "fontName":"Fonts/shovel-knight-extended.ttf", 
+               "fontSize":16, 
+               "registration": [0.0, 0.5], 
+               "color":[255, 255, 0, 255] 
+            } 
+         ] 
+      },
+      { 
+         "type":"Actor", 
+         "name":"Music", 
+         "components":[ 
+            { 
+               "type":"AudioComponent", 
+               "soundName_":"Sounds/bmusic.mp3", 
+               "loop_":true, 
+               "playOnAwake_":true 
+            } 
+         ] 
+      },
+      {
+         "type":"Actor",
+         "name":"Floor",
+         "transform":{
+            "position":[
+               400,
+               540
+            ],
+            "scale":[
+               1,
+               1
+            ],
+            "rotation":0
+         },
+         "components":[
+            {
+               "type":"RBPhysicsComponent",
+               "data.is_dynamic":false
+            },
+            {
+               "type":"CollisionComponent",
+               "data.size": [800, 24]
+            }
+         ]
+      },
       {
          "type":"Actor",
          "name":"Player",
@@ -10,82 +93,42 @@
                300
             ],
             "scale":[
-               2,
-               2
+               1,
+               1
             ],
             "rotation":0
          },
          "components":[
             {
                "type":"PlayerComponent",
-               "speed":200
+               "speed":20
+            },
+            { 
+               "type":"AudioComponent", 
+               "soundName_":"Sounds/laser.wav", 
+               "playOnAwake_":true,
+               "loop_":true,
+               "pitch_":5
             },
             {
-               "type":"PhysicsComponent",
-               "m_damping":0.99
+               "type":"RBPhysicsComponent",
+               "damping":0.99,
+               "data.gravity_scale":1,
+               "data.constrain_angle":true
             },
             {
-               "type":"SpriteAnimComponent",
-               "texture_name":"Textures/gothic-hero-idle.png",
+               "type":"CollisionComponent"
+            },
+            {
+               "type":"SpriteAnimateComponent",
+               "texture_name":"Textures/gothic-hero-run.png",
                "fps":12,
-               "num_colums":4,
+               "num_columns":12
                "num_rows":1,
                "start_frame":1,
-               "end_frame":4
+               "end_frame":12
             }
          ]
       }
    ]
 }
-
-{ 
-         "type":"Actor", 
-         "name":"Music", 
-         "components":[ 
-            { 
-               "type":"AudioComponent", 
-               "sound_name":"audio/music.mp3", 
-               "loop":true, 
-               "play_on_start":true 
-            } 
-         ] 
-      } 
-
-{
-   "type":"Actor",
-   "name":"Coin",
-   "tag":"Pickup",
-   "Prefab":true,
-   "transform":{
-      "position":[
-         600,
-         200
-      ],
-      "scale":[
-         1,
-         1
-      ],
-      "rotation":0
-   },
-   "components":[
-      {
-         "type":"RBPhysicsComponent",
-         "damping":0.4,
-         "data.gravity_scale":1,
-         "data.constrain_angle":false
-      },
-      {
-         "type":"CollisionComponent",
-         "data.restitution": 0.7
-      },
-      {
-         "type":"SpriteAnimComponent",
-         "texture_name":"Textures/coin.png",
-         "fps":12,
-         "num_columns":8,
-         "num_rows":1,
-         "start_frame":1,
-         "end_frame":8
-      }
-   ]
-},
