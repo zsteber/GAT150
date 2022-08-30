@@ -14,9 +14,12 @@ namespace neu
 		virtual void Update() override;
 		virtual void Draw(Renderer& renderer) override;
 
-		bool Write(const rapidjson::Value& value) const override;
+		virtual void Initialize() override {}
 
+		bool Write(const rapidjson::Value& value) const override;
 		bool Read(const rapidjson::Value& value) override;
+
+		Rect& GetSource() override;
 
 		float fps = 0;
 		int num_columns = 0;

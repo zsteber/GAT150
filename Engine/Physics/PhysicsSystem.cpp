@@ -4,7 +4,7 @@
 namespace neu
 {
 
-	const float PhysicsSystem::pixelsPerUnit = 48.0f;
+	float PhysicsSystem::pixelsPerUnit = 48.0f;
 
 	void PhysicsSystem::Initialize()
 	{
@@ -24,7 +24,7 @@ namespace neu
 		m_world->Step(1.0f / 60.0f, 8, 3);
 	}
 
-	b2Body* PhysicsSystem::CreateBody(const Vector2& position, float angle, const RigidBodyData& data)
+	b2Body* PhysicsSystem::CreateBody(Vector2& position, float angle, const RigidBodyData& data)
 	{
 		Vector2 worldPosition = ScreenToWorld(position);
 

@@ -2,6 +2,7 @@
 #include <cmath>
 #include <sstream>
 #include <string>
+#include <Math/Vector2.h>
 
 
 namespace neu
@@ -38,6 +39,10 @@ namespace neu
 		float Length();
 		float DistanceSqr(const Vector2& v);
 		float Distance(const Vector2& v);
+
+		float Dot(const Vector2& v);
+		float GetAngleBetween(const Vector2& v);
+		float GetSignedAngleBetween(const Vector2& v);
 
 		Vector2 Normalized();
 		void Normalize();
@@ -122,5 +127,28 @@ namespace neu
 		float y = v.x * std::sin(angle) + v.y * std::cos(angle);
 
 		return Vector2(x, y);
+	}
+
+	inline float Vector2::Dot(const Vector2& v)
+	{
+		return x * v.x + y * v.y;
+	}
+
+	inline float Vector2::GetAngleBetween(const Vector2& v)
+	{
+		return std::acos(Dot(v));
+	}
+
+	inline float Vector2::GetSignedAngleBetween(const Vector2& v)
+	{
+		float y = x * v.y - y * v.x; // perpendicular dot product 
+		float x = x * v.x + y * v.y; // dor product 
+
+		return std::atan2(y, x);
+	}
+
+	inline float Vector2::GetAngle()
+	{
+		return std::atan2(y, x);
 	}
 }

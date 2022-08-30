@@ -10,16 +10,17 @@ namespace neu
 		CLASS_DECLARATION(RBPhysicsComponent);
 
 		RBPhysicsComponent() = default;
-		~RBPhysicsComponent() = default;
+		~RBPhysicsComponent();
 
 		void Initialize() override;
 
-		virtual void ApplyForce(const Vector2& force) { acceleration += force; }
+		virtual void ApplyForce(const Vector2& force);
 		void Update() override;
 		bool Write(const rapidjson::Value& value) const override;
 		bool Read(const rapidjson::Value& value) override;
 
-		
+		friend class CollisionComponent;
+
 	private:
 		PhysicsSystem::RigidBodyData data;
 		b2Body* m_body = nullptr;
