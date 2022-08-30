@@ -52,36 +52,11 @@
          "components":[ 
             { 
                "type":"AudioComponent", 
-               "soundName_":"Sounds/bmusic.mp3", 
-               "loop_":true, 
-               "playOnAwake_":true 
+               "m_soundName":"Sounds/bmusic.mp3", 
+               "m_loop":true, 
+               "m_playOnAwake":true 
             } 
          ] 
-      },
-      {
-         "type":"Actor",
-         "name":"Floor",
-         "transform":{
-            "position":[
-               400,
-               540
-            ],
-            "scale":[
-               1,
-               1
-            ],
-            "rotation":0
-         },
-         "components":[
-            {
-               "type":"RBPhysicsComponent",
-               "data.is_dynamic":false
-            },
-            {
-               "type":"CollisionComponent",
-               "data.size": [800, 24]
-            }
-         ]
       },
       {
          "type":"Actor",
@@ -105,9 +80,9 @@
             },
             { 
                "type":"AudioComponent", 
-               "soundName_":"Sounds/laser.wav", 
-               "playOnAwake_":true,
-               "loop_":true,
+               "m_soundName":"Sounds/laser.wav", 
+               "m_playOnAwake":true,
+               "m_loop":true,
                "pitch_":5
             },
             {

@@ -141,6 +141,12 @@
     <ClCompile Include="Physics\ContactListener.cpp">
       <Filter>Physics</Filter>
     </ClCompile>
+    <ClCompile Include="Components\CharacterComponent.cpp">
+      <Filter>Source Files\Components</Filter>
+    </ClCompile>
+    <ClCompile Include="FrameWork\EventManager.cpp">
+      <Filter>FrameWork</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="Math\MathUtils.h">
@@ -281,6 +287,15 @@
     </ClInclude>
     <ClInclude Include="Physics\ContactListener.h">
       <Filter>Physics</Filter>
+    </ClInclude>
+    <ClInclude Include="Components\CharacterComponent.h">
+      <Filter>Source Files\Components</Filter>
+    </ClInclude>
+    <ClInclude Include="FrameWork\Event.h">
+      <Filter>FrameWork</Filter>
+    </ClInclude>
+    <ClInclude Include="FrameWork\EventManager.h">
+      <Filter>FrameWork</Filter>
     </ClInclude>
   </ItemGroup>
   <ItemGroup>

@@ -33,7 +33,7 @@ namespace neu
 
 	void SpriteAnimComponent::Draw(Renderer& renderer)
 	{
-		renderer.Draw(m_texture, source, m_owner->m_transform);
+		renderer.Draw(m_texture, source, m_owner->m_transform, registration, flipHorizontal);
 	}
 
 	bool SpriteAnimComponent::Write(const rapidjson::Value& value) const

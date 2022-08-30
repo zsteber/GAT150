@@ -22,6 +22,7 @@ namespace neu
 
 	void PlayerComponent::Update()
 	{
+		Vector2 direction = Vector2::zero;
 		// Movement
 		if (g_inputSystem.GetKeyState(key_left) == InputSystem::Held)
 		{
@@ -38,19 +39,12 @@ namespace neu
 			thrust = 100;
 		}
 
+		Vector2 velocity;
 		auto component = m_owner->GetComponent<PhysicsComponent>();
-
 		if (component)
 		{
-			// Thrust Force
-			Vector2 force = Vector2::Rotate({ 1, 0 }, neu::DegToRad(m_owner->m_transform.rotation)) * thrust;
-			component->ApplyForce(force);
-
-			//component->ApplyForce(direction * speed);
-
-			// Gravity
-			force = (Vector2{ 400,300 } - m_owner->m_transform.position).Normalized() * 60.0;
-			component->ApplyForce(force);
+			component->ApplyForce(direction * speed);
+			velocity = component->velocity;
 		}
 
 		// 
@@ -59,6 +53,12 @@ namespace neu
 			auto component = m_owner->GetComponent<AudioComponent>();
 			if (component) component->Play();
 		}
+	}
+
+	auto renderComponent = m_owner->GetComponent<RenderComponent>();
+	if (renderComponent)
+	{
+		if (velocity.x != 0 renderComponent->SetFlipHorizontal(velocity.x < 0));
 	}
 
 	bool PlayerComponent::Write(const rapidjson::Value& value) const

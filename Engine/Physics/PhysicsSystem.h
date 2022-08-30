@@ -45,6 +45,7 @@ namespace neu
 		b2Body* CreateBody(Vector2& position, float angle, const RigidBodyData& data);
 		void DestroyBody(b2Body* body);
 		void SetCollisionBox(b2Body* body, const CollisionData& data, class Actor* actor = nullptr);
+		void SetCollisionBoxStatic(b2Body* body, const CollisionData& data, class Actor* actor = nullptr);
 
 		static Vector2 WorldToScreen(Vector2& world) { return world * pixelsPerUnit; }
 		static Vector2 ScreenToWorld(Vector2& screen) { return screen * (1.0f / pixelsPerUnit); }

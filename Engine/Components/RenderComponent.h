@@ -1,5 +1,6 @@
 #pragma once
 #include "../Math/Rect.h"
+#include "../Math/Vector2.h"
 #include "../Framework/Component.h"
 
 namespace neu
@@ -12,7 +13,12 @@ namespace neu
 		virtual void Draw(Renderer& renderer) = 0;
 		virtual Rect& GetSource() { return source; }
 
+		void SetFlipHorizontal(bool flip = true) { flipHorizontal = flip; }
+		bool GetFlipHorizontal() { return flipHorizontal; }
+
 	protected:
 		Rect source;
+		bool flipHorizontal = false;
+		Vector2 registration = Vector2{ 0.5f, 0.5f };
 	};
 }
