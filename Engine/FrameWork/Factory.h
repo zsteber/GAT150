@@ -48,11 +48,7 @@ namespace neu
 
 	}
 
-	template<typename T>
-	inline void Factory::RegisterPrefab(const std::string& key, std::unique_ptr<T> instance)
-	{
-		m_registry[key] = std::make_unique<PrefabCreator<T>>(std::move(instance));
-	}
+	
 
 	template<typename T>
 	inline std::unique_ptr<T> Factory::Create(const std::string& key)
@@ -81,5 +77,11 @@ namespace neu
 		std::unique_ptr<T> m_instance;
 
 	};
+
+	template<typename T>
+	inline void Factory::RegisterPrefab(const std::string& key, std::unique_ptr<T> instance)
+	{
+		m_registry[key] = std::make_unique<PrefabCreator<T>>(std::move(instance));
+	}
 
 }

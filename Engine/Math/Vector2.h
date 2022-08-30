@@ -116,10 +116,6 @@ namespace neu
 		(*this) /= Length();
 	}
 
-	inline float Vector2::GetAngle()
-	{
-		return std::atan2(y, x);
-	}
 
 	inline Vector2 Vector2::Rotate(const Vector2& v, float angle)
 	{

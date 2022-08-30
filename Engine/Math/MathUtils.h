@@ -52,7 +52,7 @@ namespace neu
     template <typename T>
     T mod(T numerator, T denominator)
     {
-        return std::fmod(numerator, denominator);
+        return fmod(numerator, denominator);
     }
 
     template <>
