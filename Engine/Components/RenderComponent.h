@@ -2,6 +2,7 @@
 #include "../Math/Rect.h"
 #include "../Math/Vector2.h"
 #include "../Framework/Component.h"
+#include "Renderer/Renderer.h"
 
 namespace neu
 {

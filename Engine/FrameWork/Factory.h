@@ -1,6 +1,6 @@
 #pragma once
 #include "Singleton.h"
-
+#include "GameObject.h"
 #include <memory>
 #include <map>
 #include <string>

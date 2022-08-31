@@ -1,5 +1,7 @@
 #pragma once
 #include "Actor.h"
+#include "Gameobject.h"
+#include "Serialization/Serializable.h"
 #include <list>
 #include <memory>
 

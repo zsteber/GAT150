@@ -1,6 +1,7 @@
 #pragma once
 #include "GameObject.h"
 #include "Component.h"
+#include "Renderer/Renderer.h"
 #include <vector>
 
 namespace neu

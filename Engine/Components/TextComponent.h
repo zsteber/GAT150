@@ -2,6 +2,8 @@
 #include "RenderComponent.h"
 #include "Math/Color.h"
 #include "Math/Vector2.h"
+#include "Renderer/Font.h"
+#include "Renderer/Texture.h"
 #include <memory>
 
 namespace neu

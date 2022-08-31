@@ -1,4 +1,6 @@
 #pragma once
+#include "Renderer/Renderer.h"
+#include "FrameWork/Scene.h"
 #include <memory>
 
 namespace neu

@@ -22,8 +22,8 @@ namespace neu
 
 		AudioChannel m_channel;
 		std::string m_soundName;
-		float m_volume{ 1 };
-		float m_pitch{ 1 };
+		float m_volume{ 1.0f };
+		float m_pitch{ 1.0f };
 		bool m_playOnAwake{ false };
 		bool m_loop{ false };
 	};

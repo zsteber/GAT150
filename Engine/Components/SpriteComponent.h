@@ -1,5 +1,6 @@
 #pragma once
 #include "RenderComponent.h"
+#include "Renderer/Texture.h"
 #include "Math/Rect.h"
 
 namespace neu

@@ -1,4 +1,5 @@
 #pragma once
+#include "FrameWork/Actor.h"
 
 namespace neu
 {

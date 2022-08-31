@@ -1,4 +1,7 @@
 #pragma once
+#include "Math/Color.h"
+#include "Math/Vector2.h"
+#include "Math/Rect.h"
 #include "rapidjson/document.h"
 #include <string>
 #include <istream>
