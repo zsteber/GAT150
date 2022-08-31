@@ -18,6 +18,8 @@ namespace neu
 
 		std::unique_ptr<GameObject> Clone() override { return std::make_unique<Actor>(*this); }
 
+		CLASS_DECLARATION(Actor)
+
 		virtual void Initialize() override;
 
 		virtual void Update() override;
@@ -28,8 +30,8 @@ namespace neu
 
 		void AddChild(std::unique_ptr<Actor> child);
 
-
 		void AddComponent(std::unique_ptr<Component> component);
+
 		template<typename T>
 		T* GetComponent();
 
@@ -42,6 +44,14 @@ namespace neu
 		std::string& GetName() { return name; }
 		void SetName(const std::string& name) { this->name = name; }
 
+		void SetDestroy() { m_destroy = true; }
+		bool IsDestroyed() { return m_destroy; }
+
+		void SetActive(bool active = true) { m_active = active;	}
+		bool IsActive() { return m_active;	}
+
+		Scene* GetScene() {	return m_scene;	}
+
 		friend class Scene;
 
 		Transform m_transform;
@@ -50,12 +60,13 @@ namespace neu
 		std::string name;
 		std::string tag;
 
+		bool m_active = true;
 
 		bool m_destroy = false;
 		
-
 		Scene* m_scene = nullptr;
 		Actor* m_parent = nullptr;
+
 		std::vector<std::unique_ptr<Component>> m_components;
 		std::vector<std::unique_ptr<Actor>> m_children;
 	};

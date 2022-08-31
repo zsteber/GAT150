@@ -9,7 +9,7 @@ namespace neu
 	class CollisionComponent : public Component, public Collision
 	{
 	public:
-		CLASS_DECLARATION(CollisionComponent);
+		CLASS_DECLARATION(CollisionComponent)
 
 		using functionpr = std::function<void(Actor*)>;
 

@@ -33,6 +33,7 @@ bool neu::Font::Create(const std::string& filename, int& fontsize)
 	}
 	return true;
 }
+
 namespace neu
 {
 

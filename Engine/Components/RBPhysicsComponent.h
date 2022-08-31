@@ -7,7 +7,7 @@ namespace neu
 
 	class RBPhysicsComponent : public PhysicsComponent
 	{
-		CLASS_DECLARATION(RBPhysicsComponent);
+		CLASS_DECLARATION(RBPhysicsComponent)
 
 		RBPhysicsComponent() = default;
 		~RBPhysicsComponent();
@@ -22,7 +22,7 @@ namespace neu
 		friend class CollisionComponent;
 
 	private:
-		PhysicsSystem::RigidBodyData data;
 		b2Body* m_body = nullptr;
+		PhysicsSystem::RigidBodyData data;
 	};
 }
