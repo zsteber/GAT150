@@ -1,8 +1,8 @@
 #include "EnemyComponent.h"
 #include "Engine.h"
 #include <iostream>
-
-namespace neu
+/*
+    namespace neu
 {
 
     void EnemyComponent::Initialize()
@@ -60,3 +60,4 @@ namespace neu
         return true;
     }
 }
+*/

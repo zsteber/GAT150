@@ -9,6 +9,7 @@ namespace neu
 	{
 
 	public:
+
 		Component() = default;
 		~Component() = default;
 

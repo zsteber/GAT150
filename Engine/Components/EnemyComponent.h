@@ -1,6 +1,6 @@
 #pragma once
 #include "Components/CharacterComponent.h"
-
+/*
 class EnemyComponent : public neu::CharacterComponent
 {
 public:
@@ -18,3 +18,4 @@ public:
 	virtual bool Read(const rapidjson::Value& value) override;
 
 };
+*/

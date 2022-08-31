@@ -51,11 +51,13 @@ namespace neu
 		static Vector2 WorldToScreen(Vector2& world) { return world * pixelsPerUnit; }
 		static Vector2 ScreenToWorld(Vector2& screen) { return screen * (1.0f / pixelsPerUnit); }
 	
+
+		std::unique_ptr<b2World> m_world;
+		std::unique_ptr<ContactListener> m_contactListener;
 	private:
 		static float pixelsPerUnit;
 
 
-		std::unique_ptr<b2World> m_world;
-		std::unique_ptr<ContactListener> m_contactListener;
+		
 	};
 }

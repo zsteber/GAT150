@@ -21,8 +21,8 @@ namespace neu
 
 		friend class CollisionComponent;
 
-	private:
 		b2Body* m_body = nullptr;
 		PhysicsSystem::RigidBodyData data;
+	private:
 	};
 }
