@@ -6,7 +6,6 @@
 #include "PhysicsComponent.h"
 #include "AudioComponent.h"
 #include "RenderComponent.h"
-
 #include <iostream>
 
 namespace neu
@@ -54,14 +53,14 @@ namespace neu
 			auto component = m_owner->GetComponent<AudioComponent>();
 			if (component) component->Play();
 		}
-	}
-
-	auto renderComponent = m_owner->GetComponent<RenderComponent>();
+		auto renderComponent = m_owner->GetComponent<RenderComponent>();
 
 		if (renderComponent)
 		{
-			if (velocity.x != 0 renderComponent->SetFlipHorizontal(velocity.x < 0));
+			if (velocity.x != 0 ) renderComponent->SetFlipHorizontal(velocity.x < 0);
 		}
+	}
+
 
 
 	bool PlayerComponent::Write(const rapidjson::Value& value) const

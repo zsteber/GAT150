@@ -52,7 +52,7 @@ namespace neu
 
 			g_renderer.EndFrame();
 		}
-
+		scene.RemoveAll();
 		g_audioSystem.Shutdown();
 		g_inputSystem.Shutdown();
 		g_renderer.ShutDown();
