@@ -2,9 +2,9 @@
 #include "../Resource/Resource.h"
 #include "..\Math\Vector2.h"
 #include <string>
-#include <SDL_surface.h>
 
 struct SDL_Texture;
+struct SDL_Surface;
 
 namespace neu
 {

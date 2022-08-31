@@ -18,7 +18,6 @@ namespace neu
 
 		std::unique_ptr<GameObject> Clone() override { return std::make_unique<Actor>(*this); }
 
-		CLASS_DECLARATION(Actor)
 
 		virtual void Initialize() override;
 

@@ -19,7 +19,7 @@ namespace neu
 	public:
 		struct RigidBodyData
 		{
-			float gravity_scale = 1;
+			float gravity_scale = 1.0f;
 			bool constrain_angle = false;
 			bool is_dynamic = true;
 		};
@@ -27,8 +27,8 @@ namespace neu
 		struct CollisionData
 		{
 			Vector2 size;
-			float density = 1;
-			float friction = 1;
+			float density = 1.0f;
+			float friction = 1.0f;
 			float restitution = 0.3f;
 			bool is_trigger = false;
 		};
@@ -44,6 +44,7 @@ namespace neu
 
 		b2Body* CreateBody(Vector2& position, float angle, const RigidBodyData& data);
 		void DestroyBody(b2Body* body);
+
 		void SetCollisionBox(b2Body* body, const CollisionData& data, class Actor* actor = nullptr);
 		void SetCollisionBoxStatic(b2Body* body, const CollisionData& data, class Actor* actor = nullptr);
 

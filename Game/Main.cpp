@@ -2,81 +2,60 @@
 #include <iostream>
 #include <cassert>
 
-
-using namespace std;
-
-
-int main()
+namespace neu
 {
 
-	neu::InitializeMemory();
-	neu::SetFilePath("../Assets");
-
-	rapidjson::Document document;
-	bool success = neu::json::Load("level.txt", document);
-	//assert(success);
-
-	
-	// create systems
-	neu::g_renderer.Initialize();
-	neu::g_inputSystem.Initialize();
-	neu::g_audioSystem.Initialize();
-	neu::g_resources.Initialize();
-
-	neu::Engine::Instance().Register();
-
-	// create window
-	neu::g_renderer.CreateWindow("Chicken Pot Pie", 800, 600);
-	neu::g_renderer.SetClearColor(neu::Color{ 50, 50, 50, 255 });
+	int main() {
+		InitializeMemory();
+		SetFilePath("../Assets");
 
 
-	//create actors
-	neu::Scene scene;
+		g_renderer.Initialize();
+		g_inputSystem.Initialize();
+		g_audioSystem.Initialize();
+		g_resources.Initialize();
+		g_physicsSystem.Initialize();
 
-	rapidjson::Document document;
-	bool success = neu::json::Load("level.txt", document);
+		Engine::Instance().Register();
 
-	std::unique_ptr<neu::Actor> actor = std::make_unique<neu::Actor>();
-	std::unique_ptr<neu::PlayerComponent> pcomponent = std::make_unique<neu::PlayerComponent>();
-	actor->AddComponent(std::move(pcomponent));
+		g_renderer.CreateWindow("Game", 800, 600);
+		g_renderer.SetClearColor(Color{ 0, 0, 0, 255 });
 
-	scene.Add(std::move(actor));
-	scene.Read(document);
+		Scene scene;
 
-	auto actor = neu::Factory::Instance().Create<neu::Actor>("Coin");
-	actor->m_transform.position = (600, 100);
-	actor->Initialize();
+		rapidjson::Document document;
+		bool success = json::Load("json.txt", document);
+		scene.Read(document);
 
-	scene.Add(std::move(actor));
+		std::unique_ptr<Actor> actor = std::make_unique<Actor>();
+		std::unique_ptr<PlayerComponent> playerComponent = std::make_unique <PlayerComponent>();
+		actor->AddComponent(std::move(playerComponent));
 
-	float angle = 0;
+		scene.Add(std::move(actor));
+		scene.Read(document);
 
-	bool quit = false;
-	while (!quit)
-	{
-		// update
-		neu::g_inputSystem.Update();
-		neu::g_audioSystem.Update();
-		neu::timer.Tick();
+		float angle = 0;
 
-		if (neu::g_inputSystem.GetKeyState(neu::key_escape)) quit = true;
+		bool quit = false;
+		while (!quit) {
+			g_inputSystem.Update();
+			g_audioSystem.Update();
+			g_physicsSystem.Update();
+			timer.Tick();
 
-		angle += 180.0f * neu::timer.deltaTime;
-		scene.Update();
+			scene.Update();
 
-		// render
-		neu::g_renderer.BeginFrame();
-		scene.Draw(neu::g_renderer);
+			g_renderer.BeginFrame();
+			scene.Draw(g_renderer);
+			scene.Update();
+			scene.Draw(g_renderer);
 
-		scene.Update();
-		scene.Draw(neu::g_renderer);
+			g_renderer.EndFrame();
+		}
 
-
-		neu::g_renderer.EndFrame();
+		g_audioSystem.Shutdown();
+		g_inputSystem.Shutdown();
+		g_renderer.ShutDown();
+		g_resources.Shutdown();
 	}
-
-	neu::g_audioSystem.Shutdown();
-	neu::g_inputSystem.Shutdown();
-	neu::g_renderer.ShutDown();
-	neu::g_resources.Shutdown();
 }

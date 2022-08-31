@@ -25,7 +25,8 @@ bool neu::Font::Create(std::string filename, ...)
 	return Create(filename, fontSize);
 }
 
-bool neu::Font::Create(const std::string& filename, int& fontsize)
+// BOOL CREATE filename, fontsize
+/*bool neu::Font::Create(const std::string& filename, int& fontsize)
 {
 	if (!Load(filename, fontsize))
 	{
@@ -33,6 +34,7 @@ bool neu::Font::Create(const std::string& filename, int& fontsize)
 	}
 	return true;
 }
+*/ 
 
 namespace neu
 {
@@ -54,7 +56,6 @@ namespace neu
 bool neu::Font::Load(const std::string& filename, int fontSize)
 {
 	m_ttfFont = TTF_OpenFont(filename.c_str(), fontSize);
-
 	if (m_ttfFont == nullptr)
 	{
 		return false;
