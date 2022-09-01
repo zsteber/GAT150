@@ -3,6 +3,7 @@
 #include "Renderer.h"
 #include "../Renderer/Font.h"
 #include <SDL_ttf.h>
+#include <Core/Logger.h>
 
 neu::Text::~Text()
 {
@@ -19,7 +20,14 @@ void neu::Text::Create(Renderer& renderer, const std::string text, const Color& 
 	SDL_Surface* surface = TTF_RenderText_Solid(m_font->m_ttfFont, text.c_str(), c);
 	
 	m_texture = SDL_CreateTextureFromSurface(renderer.m_renderer, surface);
+	if (surface == NULL)
+	{
+		LOG(SDL_GetError());
+	}
+	else
+	{
 		SDL_FreeSurface(surface);
+	}
 }
 
 void neu::Text::Draw(Renderer& renderer, const Vector2& position)

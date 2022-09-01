@@ -21,7 +21,7 @@ int main()
 	neu::Engine::Instance().Register();
 
 	// create window
-	neu::g_renderer.CreateWindow("???", 800, 600);
+	neu::g_renderer.CreateWindow("LeGame", 800, 600);
 	neu::g_renderer.SetClearColor(neu::Color{ 20, 20, 20, 0 });
 
 	// create scene

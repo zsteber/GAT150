@@ -9,28 +9,28 @@ namespace neu
 	class CollisionComponent : public Component, public Collision
 	{
 	public:
+		using functionPtr = std::function<void(Actor*)>;
+
+	public:
 		CLASS_DECLARATION(CollisionComponent)
 
-		using functionpr = std::function<void(Actor*)>;
-
-		virtual void Initialize() override;
+			virtual void Initialize() override;
 		virtual void Update() override;
 
 		virtual void OnCollisionEnter(Actor* other) override;
 		virtual void OnCollisionExit(Actor* other) override;
 
+		void SetCollisionEnter(functionPtr function) { m_enterFunction = function; }
+		void SetCollisionExit(functionPtr function) { m_exitFunction = function; }
+
 		virtual bool Write(const rapidjson::Value& value) const override;
 		virtual bool Read(const rapidjson::Value& value) override;
 
-		void SetCollisionEnter(functionpr function) { enterFunction = function; }
-		void SetCollisionExit(functionpr function) { exitFunction = function; }
-
 	private:
 		PhysicsSystem::CollisionData data;
-		Vector2 scale_offset = Vector2{ 1, 1 };
+		Vector2 scale_offset = { 1, 1 };
 
-		functionpr enterFunction;
-		functionpr exitFunction;
-
+		functionPtr m_enterFunction;
+		functionPtr m_exitFunction;
 	};
 }

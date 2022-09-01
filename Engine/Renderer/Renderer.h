@@ -1,6 +1,7 @@
 #pragma once
-#include "../Math/Vector2.h"
-#include "../Math/Color.h"
+#include "Math/Vector2.h"
+#include "Math/Color.h"
+#include "Math/Matrix3x3.h"
 #include "Texture.h"
 
 struct SDL_Renderer;
@@ -39,6 +40,9 @@ namespace neu
 		int GetHeight() { return m_height; }
 		SDL_Renderer* GetRenderer() { return m_renderer; }
 
+		void SetViewMatrix(const Matrix3x3& view) { m_view = view; }
+		void SetViewportMatrix(const Matrix3x3& viewport) { m_viewport = viewport; }
+
 		friend class Text;
 		friend class Texture;
 	private:
@@ -50,5 +54,8 @@ namespace neu
 		
 		SDL_Window* m_window = nullptr;
 		SDL_Renderer* m_renderer = nullptr;
+
+		Matrix3x3 m_view;
+		Matrix3x3 m_viewport;
 	};
 }

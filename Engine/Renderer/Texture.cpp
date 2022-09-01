@@ -21,6 +21,35 @@ namespace neu
 		return Create(renderer, filename);
 	}
 
+
+	bool Texture::Create(Renderer& renderer, const std::string& filename)
+	{
+		// Load Surface
+		SDL_Surface* surface = IMG_Load(filename.c_str());
+		if (surface == nullptr) LOG(SDL_GetError());
+
+		texture = SDL_CreateTextureFromSurface(renderer.m_renderer, surface);
+		if (texture == nullptr)
+		{
+			LOG(SDL_GetError());
+			SDL_FreeSurface(surface);
+			return false;
+		}
+
+		SDL_FreeSurface(surface);
+
+		// Create Texture
+		texture = SDL_CreateTextureFromSurface(renderer.GetRenderer(), surface);
+		if (texture == nullptr)
+		{
+			LOG(SDL_GetError());
+			SDL_FreeSurface(surface);
+			return false;
+		}
+
+		return true;
+	}
+
 	bool Texture::CreateFromSurface(SDL_Surface* surface, Renderer& renderer)
 	{
 		if (texture) SDL_DestroyTexture(texture);
@@ -33,24 +62,6 @@ namespace neu
 			LOG(SDL_GetError());
 			return false;
 		}
-		return true;
-	}
-
-	bool Texture::Create(Renderer& renderer, const std::string& filename)
-	{
-		// Load Surface
-		SDL_Surface* surface = IMG_Load(filename.c_str());
-		if (surface == nullptr) LOG(SDL_GetError());
-
-		// Create Texture
-		texture = SDL_CreateTextureFromSurface(renderer.GetRenderer(), surface);
-		if (texture == nullptr)
-		{
-			LOG(SDL_GetError());
-			SDL_FreeSurface(surface);
-			return false;
-		}
-
 		return true;
 	}
 

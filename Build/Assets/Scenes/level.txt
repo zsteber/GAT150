@@ -38,7 +38,7 @@
          "components":[
             {
                "type":"TextComponent",
-               "text":"Engine Playtest",
+               "text":"Playtest",
                "fontName":"Fonts/RadicalBeat.ttf",
                "fontSize":16,
                "registration":[
@@ -96,12 +96,14 @@
                "type":"CollisionComponent"
             },
             {
-               "type":"SpriteAnimateComponent",
-               "texture_name":"Textures/gothic-hero-idle.png",
-               "fps":4,
-               "num_columns":4"num_rows":1,
-               "start_frame":1,
-               "end_frame":4
+               "type":"SpriteAnimComponent",
+                "sequence.name":"idle",
+                   "sequence.fps":12,
+                   "sequence.num_columns":4,
+                   "sequence.num_rows":1,
+                   "sequence.start_frame":1,
+                   "sequence.end_frame":4,
+                 "texture_name":"Textures/gothic-hero-idle.png"
             }
          ]
       }

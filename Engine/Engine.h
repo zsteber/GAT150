@@ -19,6 +19,7 @@
 #include "Input/InputSystem.h"
 #include "Audio/AudioSystem.h"
 #include "Resource/ResourceManager.h"
+#include "Physics/PhysicsSystem.h"
 
 #include "Framework/Scene.h"
 #include "Framework/Game.h"
@@ -36,6 +37,8 @@
 #include "Components/ModelComponent.h"
 #include "Components/SpriteAnimComponent.h"
 #include "Components/TilemapComponent.h"
+#include "Components/EnemyComponent.h"
+#include "Components/CharacterComponent.h"
 
 #include <memory>
 

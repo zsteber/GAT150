@@ -1,7 +1,7 @@
 #pragma once
 #include "Framework/Component.h"
 #include "Physics/Collision.h"
-#include "FrameWork/Event.h"
+#include "Framework/Event.h"
 
 namespace neu
 {
@@ -20,6 +20,5 @@ namespace neu
 		float health = 100;
 		float damage = 10;
 		float speed = 0;
-
 	};
 }
