@@ -1,6 +1,6 @@
 {
    "actors":[
-     {
+      {
          "type":"Actor",
          "name":"Background",
          "transform":{
@@ -21,42 +21,50 @@
             }
          ]
       },
-          { 
-         "type":"Actor", 
-         "name":"Text", 
-         "transform":{ 
-            "position":[ 
-               40, 
-               30 
-            ], 
-            "scale":[ 
-               1, 
-               1 
-            ], 
-            "rotation":0 
-         }, 
-         "components":[ 
-            { 
-               "type":"TextComponent", 
-               "text":"Engine Playtest", 
-               "fontName":"Fonts/RadicalBeat.ttf", 
-               "fontSize":16, 
-               "registration": [0.0, 0.5], 
-               "color":[255, 255, 0, 255] 
-            } 
-         ] 
+      {
+         "type":"Actor",
+         "name":"Text",
+         "transform":{
+            "position":[
+               40,
+               30
+            ],
+            "scale":[
+               1,
+               1
+            ],
+            "rotation":0
+         },
+         "components":[
+            {
+               "type":"TextComponent",
+               "text":"Engine Playtest",
+               "fontName":"Fonts/RadicalBeat.ttf",
+               "fontSize":16,
+               "registration":[
+                  0.0,
+                  0.5
+               ],
+               "color":[
+                  255,
+                  255,
+                  0,
+                  255
+               ]
+            }
+         ]
       },
-      { 
-         "type":"Actor", 
-         "name":"Music", 
-         "components":[ 
-            { 
-               "type":"AudioComponent", 
-               "m_soundName":"Audio/music.mp3", 
-               "m_loop":true, 
-               "m_playOnAwake":true 
-            } 
-         ] 
+      {
+         "type":"Actor",
+         "name":"Music",
+         "components":[
+            {
+               "type":"AudioComponent",
+               "m_soundName":"Audio/music.mp3",
+               "m_loop":true,
+               "m_playOnAwake":true
+            }
+         ]
       },
       {
          "type":"Actor",
@@ -91,8 +99,7 @@
                "type":"SpriteAnimateComponent",
                "texture_name":"Textures/gothic-hero-idle.png",
                "fps":4,
-               "num_columns":4
-               "num_rows":1,
+               "num_columns":4"num_rows":1,
                "start_frame":1,
                "end_frame":4
             }

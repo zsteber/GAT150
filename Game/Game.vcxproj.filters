@@ -13,6 +13,9 @@
       <UniqueIdentifier>{67DA6AB6-F800-4c08-8B7A-83BB121AAD01}</UniqueIdentifier>
       <Extensions>rc;ico;cur;bmp;dlg;rc2;rct;bin;rgs;gif;jpg;jpeg;jpe;resx;tiff;tif;png;wav;mfcribbon-ms</Extensions>
     </Filter>
+    <Filter Include="GameComponents">
+      <UniqueIdentifier>{52308c4b-dd77-4017-acfd-62f7e8c78796}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="Main.cpp">
@@ -21,10 +24,16 @@
     <ClCompile Include="LeGame.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
+    <ClCompile Include="..\Engine\Components\EnemyComponent.cpp">
+      <Filter>GameComponents</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="LeGame.h">
       <Filter>Source Files</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Engine\Components\EnemyComponent.h">
+      <Filter>GameComponents</Filter>
     </ClInclude>
   </ItemGroup>
 </Project>

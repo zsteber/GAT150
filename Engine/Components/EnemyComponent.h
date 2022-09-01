@@ -1,6 +1,6 @@
 #pragma once
 #include "Components/CharacterComponent.h"
-/*
+
 class EnemyComponent : public neu::CharacterComponent
 {
 public:
@@ -17,5 +17,5 @@ public:
 	virtual bool Write(const rapidjson::Value& value) const override;
 	virtual bool Read(const rapidjson::Value& value) override;
 
+protected:
 };
-*/

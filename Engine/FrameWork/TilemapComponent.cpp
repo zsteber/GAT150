@@ -1,4 +1,4 @@
-#include "TilemapComponent.h"
+#include "Components/TilemapComponent.h"
 #include "Engine.h"
 
 namespace neu
@@ -36,7 +36,7 @@ namespace neu
         READ_DATA(value, num_columns);
         READ_DATA(value, num_rows);
         READ_DATA(value, size);
-       // READ_DATA(value, tile_names);
+      // READ_DATA(value, tile_names);
       // READ_DATA(value, tiles);
 
         return true;

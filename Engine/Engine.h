@@ -35,6 +35,7 @@
 #include "Components/RBPhysicsComponent.h"
 #include "Components/ModelComponent.h"
 #include "Components/SpriteAnimComponent.h"
+#include "Components/TilemapComponent.h"
 
 #include <memory>
 

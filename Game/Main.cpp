@@ -45,7 +45,6 @@ int main()
 		game->Update();
 
 		// renderer
-
 		neu::g_renderer.BeginFrame();
 
 		game->Draw(neu::g_renderer);

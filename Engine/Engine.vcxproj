@@ -160,7 +160,6 @@
     <ClCompile Include="Components\AudioComponent.cpp" />
     <ClCompile Include="Components\CharacterComponent.cpp" />
     <ClCompile Include="Components\CollisionComponent.cpp" />
-    <ClCompile Include="Components\EnemyComponent.cpp" />
     <ClCompile Include="Components\ModelComponent.cpp" />
     <ClCompile Include="Components\PhysicsComponent.cpp" />
     <ClCompile Include="Components\PlayerComponent.cpp" />
@@ -200,7 +199,6 @@
     <ClInclude Include="Components\AudioComponent.h" />
     <ClInclude Include="Components\CharacterComponent.h" />
     <ClInclude Include="Components\CollisionComponent.h" />
-    <ClInclude Include="Components\EnemyComponent.h" />
     <ClInclude Include="Components\ModelComponent.h" />
     <ClInclude Include="Components\PhysicsComponent.h" />
     <ClInclude Include="Components\PlayerComponent.h" />
@@ -209,6 +207,7 @@
     <ClInclude Include="Components\SpriteAnimComponent.h" />
     <ClInclude Include="Components\SpriteComponent.h" />
     <ClInclude Include="Components\TextComponent.h" />
+    <ClInclude Include="Components\TilemapComponent.h" />
     <ClInclude Include="Core\File.h" />
     <ClInclude Include="Core\Logger.h" />
     <ClInclude Include="Core\Memory.h" />
@@ -247,11 +246,6 @@
     <ClInclude Include="Resource\Resource.h" />
     <ClInclude Include="Resource\ResourceManager.h" />
     <ClInclude Include="Serialization\Serializable.h" />
-  </ItemGroup>
-  <ItemGroup>
-    <Text Include="..\Build\Assets\level.txt" />
-    <Text Include="Prefabs.txt" />
-    <Text Include="Tilemap.txt" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">

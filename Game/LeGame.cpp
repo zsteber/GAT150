@@ -38,7 +38,7 @@ namespace neu
 		switch (m_gameState)
 		{
 		case gameState::titleScreen:
-			//m_scene->GetActorFromName("Title")->SetActive(true);
+			// m_scene->GetActorFromName("Title")->SetActive(true);
 			m_lives = 3;
 
 			if (g_inputSystem.GetKeyState(key_space) == InputSystem::KeyState::Press)
