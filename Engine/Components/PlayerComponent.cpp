@@ -83,4 +83,7 @@ namespace neu
 	{
 		std::cout << "Player Exit" << std::endl;
 	}
+	void PlayerComponent::OnNotify(const Event& event)
+	{
+	}
 }

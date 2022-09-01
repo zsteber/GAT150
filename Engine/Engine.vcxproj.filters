@@ -150,6 +150,9 @@
     <ClCompile Include="Components\EnemyComponent.cpp">
       <Filter>Source Files\Components</Filter>
     </ClCompile>
+    <ClCompile Include="FrameWork\TilemapComponent.cpp">
+      <Filter>Source Files\Components</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="Math\MathUtils.h">
@@ -303,9 +306,18 @@
     <ClInclude Include="Components\EnemyComponent.h">
       <Filter>Source Files\Components</Filter>
     </ClInclude>
+    <ClInclude Include="FrameWork\TilemapComponent.h">
+      <Filter>Source Files\Components</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <Text Include="..\Build\Assets\level.txt">
+      <Filter>Source Files</Filter>
+    </Text>
+    <Text Include="Tilemap.txt">
+      <Filter>Source Files</Filter>
+    </Text>
+    <Text Include="Prefabs.txt">
       <Filter>Source Files</Filter>
     </Text>
   </ItemGroup>

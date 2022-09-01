@@ -1,61 +1,67 @@
 #include "Engine.h"
+#include "LeGame.h"
 #include <iostream>
-#include <cassert>
 
-namespace neu
+using namespace std;
+
+
+int main()
 {
+	neu::InitializeMemory();
 
-	int main() {
-		InitializeMemory();
-		SetFilePath("../Assets");
+	neu::SetFilePath("../Assets");
 
+	// initialize systems
+	neu::g_renderer.Initialize();
+	neu::g_inputSystem.Initialize();
+	neu::g_audioSystem.Initialize();
+	neu::g_resources.Initialize();
+	neu::g_physicsSystem.Initialize();
+	neu::g_eventManager.Initialize();
+	neu::Engine::Instance().Register();
 
-		g_renderer.Initialize();
-		g_inputSystem.Initialize();
-		g_audioSystem.Initialize();
-		g_resources.Initialize();
-		g_physicsSystem.Initialize();
+	// create window
+	neu::g_renderer.CreateWindow("???", 800, 600);
+	neu::g_renderer.SetClearColor(neu::Color{ 20, 20, 20, 0 });
 
-		Engine::Instance().Register();
+	// create scene
+	unique_ptr<neu::LeGame> game = make_unique<neu::LeGame>();
+	game->Initialize();
 
-		g_renderer.CreateWindow("Game", 800, 600);
-		g_renderer.SetClearColor(Color{ 0, 0, 0, 255 });
+	bool quit = false;
+	while (!quit)
+	{
 
-		Scene scene;
+		//update (engine)
+		neu::timer.Tick();
+		neu::g_inputSystem.Update();
+		neu::g_audioSystem.Update();
+		neu::g_physicsSystem.Update();
+		neu::g_eventManager.Update();
 
-		rapidjson::Document document;
-		bool success = json::Load("json.txt", document);
-		scene.Read(document);
+		if (neu::g_inputSystem.GetKeyDown(neu::key_escape)) { quit = true; }
 
-		std::unique_ptr<Actor> actor = std::make_unique<Actor>();
-		std::unique_ptr<PlayerComponent> playerComponent = std::make_unique <PlayerComponent>();
-		actor->AddComponent(std::move(playerComponent));
+		// update Scene
+		game->Update();
 
-		scene.Add(std::move(actor));
-		scene.Read(document);
+		// renderer
 
-		float angle = 0;
+		neu::g_renderer.BeginFrame();
 
-		bool quit = false;
-		while (!quit) {
-			g_inputSystem.Update();
-			g_audioSystem.Update();
-			g_physicsSystem.Update();
-			timer.Tick();
+		game->Draw(neu::g_renderer);
 
-			scene.Update();
-
-			g_renderer.BeginFrame();
-			scene.Draw(g_renderer);
-			scene.Update();
-			scene.Draw(g_renderer);
-
-			g_renderer.EndFrame();
-		}
-		scene.RemoveAll();
-		g_audioSystem.Shutdown();
-		g_inputSystem.Shutdown();
-		g_renderer.ShutDown();
-		g_resources.Shutdown();
+		neu::g_renderer.EndFrame();
 	}
+
+	game->Shutdown();
+	game.reset();
+
+	neu::Factory::Instance().Shutdown();
+
+	neu::g_physicsSystem.Shutdown();
+	neu::g_resources.Shutdown();
+	neu::g_inputSystem.Shutdown();
+	neu::g_audioSystem.Shutdown();
+	neu::g_renderer.ShutDown();
+	neu::g_eventManager.Shutdown();
 }

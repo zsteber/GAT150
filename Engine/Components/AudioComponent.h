@@ -11,6 +11,8 @@ namespace neu
 		AudioComponent() = default;
 		~AudioComponent();
 
+		CLASS_DECLARATION(AudioComponent)
+
 		virtual void Initialize() override;
 		void Update() override;
 

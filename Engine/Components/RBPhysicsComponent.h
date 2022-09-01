@@ -7,9 +7,11 @@ namespace neu
 
 	class RBPhysicsComponent : public PhysicsComponent
 	{
+	public:
+		RBPhysicsComponent() = default;
+	
 		CLASS_DECLARATION(RBPhysicsComponent)
 
-		RBPhysicsComponent() = default;
 		~RBPhysicsComponent();
 
 		void Initialize() override;

@@ -9,7 +9,9 @@ namespace neu
 
 	bool Transform::Read(const rapidjson::Value& value)
 	{
-		READ_DATA(value, position, scale, rotation);
+		READ_DATA(value, position);
+		READ_DATA(value, scale);
+		READ_DATA(value, rotation);
 
 		return true;
 	}

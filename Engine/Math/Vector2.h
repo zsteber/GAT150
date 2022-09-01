@@ -51,10 +51,10 @@ namespace neu
 		static Vector2 Rotate(const Vector2& v, float angle);
 
 		// Arithmetic Operators
-		Vector2 operator + (const Vector2& v) { return Vector2(x + v.x, y + v.y); }
+		Vector2 operator + (const Vector2& v) const { return Vector2(x + v.x, y + v.y); }
 		Vector2 operator - (const Vector2& v) const { return Vector2{ this->x - v.x, this->y - v.y }; }
-		Vector2 operator * (const Vector2& v) { return Vector2(x * v.x, y * v.y); }
-		Vector2 operator / (const Vector2& v) { return Vector2(x / v.x, y / v.y); }
+		Vector2 operator * (const Vector2& v) const { return Vector2(x * v.x, y * v.y); }
+		Vector2 operator / (const Vector2& v) const { return Vector2(x / v.x, y / v.y); }
 
 		// Vector2 = Vector2 + float
 		Vector2& operator += (const Vector2& v) { x += v.x, y += v.y; return *this; }
@@ -63,15 +63,15 @@ namespace neu
 		Vector2& operator /= (const Vector2& v) { x /= v.x, y /= v.y; return *this; }
 		
 		// Assignment Operators
-		Vector2 operator + (float s) { return Vector2(x + s, y + s); }
+		Vector2 operator + (float s) const { return Vector2(x + s, y + s); }
 		Vector2 operator - (float s) const { return Vector2{ this->x - s, this->y - s }; }
-		Vector2 operator * (float s) { return Vector2(x * s, y * s); }
-		Vector2 operator / (float s) { return Vector2(x / s, y / s); }
+		Vector2 operator * (float s) const { return Vector2(x * s, y * s); }
+		Vector2 operator / (float s) const { return Vector2(x / s, y / s); }
 
-		Vector2 operator += (float s) { return Vector2(x += s, y += s); }
-		Vector2 operator -= (float s) { return Vector2(x -= s, y -= s); }
-		Vector2 operator *= (float s) { return Vector2(x *= s, y *= s); }
-		Vector2 operator /= (float s) { return Vector2(x /= s, y /= s); }
+		Vector2& operator += (float s) { x += s, y += s; return *this; }
+		Vector2& operator -= (float s) { x -= s, y -= s; return *this; }
+		Vector2& operator *= (float s) { x *= s, y *= s; return *this; }
+		Vector2& operator /= (float s) { x /= s, y /= s; return *this; }
 
 		//Unary
 		// Vector2 == Vector2

@@ -20,5 +20,6 @@ namespace neu
 		float health = 100;
 		float damage = 10;
 		float speed = 0;
+
 	};
 }

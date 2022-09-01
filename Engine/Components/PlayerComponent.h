@@ -1,11 +1,12 @@
 #pragma once
-#include "../FrameWork/Component.h"
+#include "FrameWork/Component.h"
 #include "Physics/Collision.h"
+#include "CharacterComponent.h"
 
 namespace neu
 {
 
-	class PlayerComponent : public Component, public Collision
+	class PlayerComponent : public CharacterComponent
 	{
 
 	public:
@@ -23,6 +24,9 @@ namespace neu
 		virtual void OnCollisionEnter(Actor* other) override;
 		virtual void OnCollisionExit(Actor* other) override;
 
+		virtual void OnNotify(const Event& event) override;
+
 		float speed = 0;
+
 	};
 }

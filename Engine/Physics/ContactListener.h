@@ -1,7 +1,6 @@
 #pragma once
-#include "Physics/PhysicsSystem.h"
-#include "box2d/b2_body.h"
-#include "box2d/b2_contact.h"
+//#include "Physics/PhysicsSystem.h"
+#include "box2d/box2d.h"
 
 namespace neu
 {

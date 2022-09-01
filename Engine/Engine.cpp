@@ -21,6 +21,5 @@ namespace neu
 		REGISTER_CLASS(PlayerComponent);
 		REGISTER_CLASS(SpriteComponent);
 		REGISTER_CLASS(SpriteAnimComponent);
-		REGISTER_CLASS(EventManager)
 	}
 }

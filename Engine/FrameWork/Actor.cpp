@@ -13,7 +13,7 @@ namespace neu
 
 		for (auto& component : other.m_components)
 		{
-			auto clone = std::make_unique<Component>((Component*)component->Clone().release());
+			auto clone = std::unique_ptr<Component>((Component*)component->Clone().release());
 			AddComponent(std::move(clone));
 		}
 	}

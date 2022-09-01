@@ -1,13 +1,12 @@
 #pragma once
 #include "GameObject.h"
 #include "Component.h"
-#include "Renderer/Renderer.h"
+#include "Math/Transform.h"
 #include <vector>
 
 namespace neu
 {
 	class Scene;
-	class Component;
 	class Renderer;
 
 	class Actor : public GameObject, public ISerializable
@@ -17,8 +16,7 @@ namespace neu
 		Actor(const Actor& other);
 		Actor(const Transform& transform) : m_transform{ transform } {}
 
-		std::unique_ptr<GameObject> Clone() override { return std::make_unique<Actor>(*this); }
-
+		CLASS_DECLARATION(Actor)
 
 		virtual void Initialize() override;
 
@@ -35,9 +33,6 @@ namespace neu
 		template<typename T>
 		T* GetComponent();
 
-		virtual void OnCollision(Actor* other) {}
-
-		float GetRadius() { return 0; }// m_model.GetRadius()* std::max(m_transform.scale.x, m_transform.scale.y); }
 		std::string& GetTag() { return tag; }
 		void SetTag(const std::string& tag) { this->tag = tag; }
 
@@ -53,6 +48,7 @@ namespace neu
 		Scene* GetScene() {	return m_scene;	}
 
 		friend class Scene;
+		friend class Component;
 
 		Transform m_transform;
 

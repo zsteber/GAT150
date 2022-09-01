@@ -1,6 +1,5 @@
 #pragma once
 #include "GameObject.h"
-#include "FrameWork/Actor.h"
 
 namespace neu
 {
@@ -10,7 +9,6 @@ namespace neu
 	{
 
 	public:
-
 		Component() = default;
 		~Component() = default;
 

@@ -17,8 +17,8 @@ namespace neu
 
 		virtual void Initialize() override {}
 
-		bool Write(const rapidjson::Value& value) const;
-		bool Read(const rapidjson::Value& value);
+		bool Write(const rapidjson::Value& value) const override;
+		bool Read(const rapidjson::Value& value) override;
 
 		Rect source;
 		std::shared_ptr<Texture> m_texture;

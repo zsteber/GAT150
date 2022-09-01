@@ -17,7 +17,7 @@
          "components":[
             {
                "type":"SpriteComponent",
-               "texture_name":"Textures/background.png"
+               "texture_name":"Textures/graveyard.png"
             }
          ]
       },
@@ -39,7 +39,7 @@
             { 
                "type":"TextComponent", 
                "text":"Engine Playtest", 
-               "fontName":"Fonts/shovel-knight-extended.ttf", 
+               "fontName":"Fonts/RadicalBeat.ttf", 
                "fontSize":16, 
                "registration": [0.0, 0.5], 
                "color":[255, 255, 0, 255] 
@@ -52,7 +52,7 @@
          "components":[ 
             { 
                "type":"AudioComponent", 
-               "m_soundName":"Sounds/bmusic.mp3", 
+               "m_soundName":"Audio/music.mp3", 
                "m_loop":true, 
                "m_playOnAwake":true 
             } 
@@ -78,13 +78,6 @@
                "type":"PlayerComponent",
                "speed":20
             },
-            { 
-               "type":"AudioComponent", 
-               "m_soundName":"Sounds/laser.wav", 
-               "m_playOnAwake":true,
-               "m_loop":true,
-               "pitch_":5
-            },
             {
                "type":"RBPhysicsComponent",
                "damping":0.99,
@@ -96,12 +89,12 @@
             },
             {
                "type":"SpriteAnimateComponent",
-               "texture_name":"Textures/gothic-hero-run.png",
-               "fps":12,
-               "num_columns":12
+               "texture_name":"Textures/gothic-hero-idle.png",
+               "fps":4,
+               "num_columns":4
                "num_rows":1,
                "start_frame":1,
-               "end_frame":12
+               "end_frame":4
             }
          ]
       }
