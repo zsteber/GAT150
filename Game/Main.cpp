@@ -4,7 +4,6 @@
 
 using namespace std;
 
-
 int main()
 {
 	neu::InitializeMemory();
@@ -18,14 +17,15 @@ int main()
 	neu::g_resources.Initialize();
 	neu::g_physicsSystem.Initialize();
 	neu::g_eventManager.Initialize();
+
 	neu::Engine::Instance().Register();
 
 	// create window
-	neu::g_renderer.CreateWindow("LeGame", 800, 600);
+	neu::g_renderer.CreateWindow("leGame", 800, 600);
 	neu::g_renderer.SetClearColor(neu::Color{ 20, 20, 20, 0 });
 
 	// create scene
-	unique_ptr<neu::LeGame> game = make_unique<neu::LeGame>();
+	unique_ptr<LeGame> game = make_unique<LeGame>();
 	game->Initialize();
 
 	bool quit = false;
@@ -45,6 +45,7 @@ int main()
 		game->Update();
 
 		// renderer
+
 		neu::g_renderer.BeginFrame();
 
 		game->Draw(neu::g_renderer);

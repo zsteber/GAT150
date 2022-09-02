@@ -101,7 +101,7 @@
                      "sequence.num_rows":1,
                      "sequence.start_frame":1,
                      "sequence.end_frame":8,
-                     "texture_name":"Textures/coin.png"
+                     "texture_name":"Textures/coins.png"
                   }
                ]
             }

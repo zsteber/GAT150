@@ -26,7 +26,11 @@ namespace neu
 	{
 		// Load Surface
 		SDL_Surface* surface = IMG_Load(filename.c_str());
-		if (surface == nullptr) LOG(SDL_GetError());
+		if (surface == nullptr)
+		{
+			LOG(SDL_GetError());
+			return false;
+		}
 
 		texture = SDL_CreateTextureFromSurface(renderer.m_renderer, surface);
 		if (texture == nullptr)
@@ -38,14 +42,6 @@ namespace neu
 
 		SDL_FreeSurface(surface);
 
-		// Create Texture
-		texture = SDL_CreateTextureFromSurface(renderer.GetRenderer(), surface);
-		if (texture == nullptr)
-		{
-			LOG(SDL_GetError());
-			SDL_FreeSurface(surface);
-			return false;
-		}
 
 		return true;
 	}
